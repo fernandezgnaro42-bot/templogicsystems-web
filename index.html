@@ -262,6 +262,7 @@ fieldset{border:0;margin:0;padding:0}
 .checks label:has(input:checked){border-color:var(--blue);color:var(--text)}
 .checks input{width:16px;height:16px;accent-color:var(--blue);margin:0}
 .fine{font-size:.8rem;color:var(--text-3);margin:0}
+.pilot-terms{margin:var(--s5) 0 0;padding:0;list-style:none;display:grid;gap:8px}.pilot-terms li{position:relative;padding-left:20px;color:var(--text-2);font-size:.95rem;line-height:1.5}.pilot-terms li::before{content:"✓";position:absolute;left:0;color:var(--cyan)}
 .mail-line{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s5);font:500 .9rem/1 var(--f-mono)}
 .mail-line a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:3px}
 .mail-line a:hover{border-color:var(--cyan)}
@@ -465,27 +466,27 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <article class="div">
         <span class="code">DIV-01 · REF</span>
         <h3 class="en">Commercial &amp; Industrial Refrigeration</h3><h3 class="es">Refrigeración Comercial e Industrial</h3>
-        <p class="en">Monitoring, diagnostics, and intelligent equipment analysis for commercial and industrial refrigeration applications.</p>
-        <p class="es">Monitoreo, diagnóstico y análisis inteligente de equipos para aplicaciones de refrigeración comercial e industrial.</p>
+        <p class="en">Monitoring and diagnostics for supermarket racks, CO₂ and ammonia systems, display cases, walk-ins and ice machines.</p>
+        <p class="es">Monitoreo y diagnóstico para racks de supermercado, sistemas de CO₂ y amoníaco, vitrinas, cuartos fríos y máquinas de hielo.</p>
         <a class="more" href="#sys-ref"><span class="en">Systems supported →</span><span class="es">Sistemas que cubre →</span></a>
       </article>
       <article class="div">
         <span class="code">DIV-02 · CHB</span>
         <h3 class="en">Chillers &amp; Boilers</h3><h3 class="es">Chillers y Boilers</h3>
-        <p class="en">Monitoring and diagnostic intelligence for chilled-water, hydronic heating, and central mechanical systems.</p>
-        <p class="es">Monitoreo y diagnóstico inteligente para sistemas de agua helada, calefacción hidrónica y plantas mecánicas centrales.</p>
+        <p class="en">Monitoring and diagnostics for air- and water-cooled chillers, boilers, cooling towers and chilled-water plants.</p>
+        <p class="es">Monitoreo y diagnóstico para chillers enfriados por aire y por agua, boilers, torres de enfriamiento y plantas de agua helada.</p>
         <a class="more" href="#sys-chb"><span class="en">Systems supported →</span><span class="es">Sistemas que cubre →</span></a>
       </article>
       <article class="div">
         <span class="code">DIV-03 · CAC</span>
         <h3 class="en">Commercial Air Conditioning</h3><h3 class="es">Aire Acondicionado Comercial</h3>
-        <p class="en">Monitoring and diagnostic intelligence for commercial comfort and process-cooling equipment.</p>
-        <p class="es">Monitoreo y diagnóstico inteligente para equipos comerciales de confort y de enfriamiento de procesos.</p>
+        <p class="en">Monitoring and diagnostics for rooftop units, heat pumps, VRF, VAV, server rooms and boxcar units.</p>
+        <p class="es">Monitoreo y diagnóstico para unidades de techo, heat pumps, VRF, VAV, server rooms y unidades boxcar.</p>
         <a class="more" href="#sys-cac"><span class="en">Systems supported →</span><span class="es">Sistemas que cubre →</span></a>
       </article>
     </div>
-    <p class="note en">Pricing is set per division and per site. Early-access partners get pilot pricing.</p>
-    <p class="note es">El precio es por división y por sitio. Los socios de acceso anticipado tienen precio de piloto.</p>
+    <p class="note en">Pricing is set per division and per site. Early-access sites start with a free 30-60 day pilot.</p>
+    <p class="note es">El precio es por división y por sitio. Los sitios de acceso anticipado empiezan con un piloto gratis de 30-60 días.</p>
   </div>
 </section>
 
@@ -524,20 +525,20 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <p class="en">Models learn each unit's normal and flag readings that start drifting away from it.</p>
         <p class="es">Los modelos aprenden lo normal de cada equipo y marcan las lecturas que se empiezan a salir.</p></div>
       <div class="cap"><h3 class="en">21-day failure risk</h3><h3 class="es">Riesgo de falla a 21 días</h3>
-        <p class="en">A risk score per unit and the component most likely involved: compressor, evaporator fan motor or condenser fan motor.</p>
-        <p class="es">Un riesgo por equipo y el componente más probable: compresor, motor del evaporador o motor del condensador.</p></div>
+        <p class="en">A risk score per unit and the component most likely involved: compressor, evaporator fan motor or condenser fan motor. Being calibrated on real equipment during our pilots.</p>
+        <p class="es">Un riesgo por equipo y el componente más probable: compresor, motor del evaporador o motor del condensador. Se está calibrando con equipos reales durante los pilotos.</p></div>
       <div class="cap"><h3 class="en">Assistant that cites sources</h3><h3 class="es">Asistente que cita sus fuentes</h3>
-        <p class="en">Ask why a unit was flagged. Answers come from manufacturer manuals and real service cases, with the source shown.</p>
-        <p class="es">Pregunte por qué se marcó un equipo. Las respuestas salen de manuales y casos de servicio reales, con la fuente a la vista.</p></div>
+        <p class="en">Every alert comes with the matching case from manufacturer manuals and real service work, with the source shown. Ask-why chat screen<span class="soon">Coming</span></p>
+        <p class="es">Cada alerta trae el caso que aplica, de manuales y servicio real, con la fuente a la vista. Pantalla para preguntar por qué<span class="soon">Pronto</span></p></div>
       <div class="cap"><h3 class="en">Private AI models</h3><h3 class="es">Modelos de IA privados</h3>
-        <p class="en">The AI runs on our own servers, not a public chatbot. Your equipment data stays private.</p>
-        <p class="es">La IA corre en nuestros propios servidores, no en un chatbot público. Los datos de sus equipos se quedan privados.</p></div>
+        <p class="en">The AI runs on private hardware we control, not a public chatbot. Your equipment data stays private.</p>
+        <p class="es">La IA corre en equipos privados que nosotros controlamos, no en un chatbot público. Los datos de sus equipos se quedan privados.</p></div>
       <div class="cap"><h3 class="en">Controller data</h3><h3 class="es">Datos de controladores</h3>
         <p class="en">Import readings from spreadsheets and controller exports. Direct BACnet and Modbus links<span class="soon">Coming</span></p>
         <p class="es">Importa lecturas de hojas de cálculo y exportaciones de controladores. Conexión directa BACnet y Modbus<span class="soon">Pronto</span></p></div>
       <div class="cap"><h3 class="en">Built for the truck</h3><h3 class="es">Hecho para la camioneta</h3>
-        <p class="en">Alerts by email and a phone-friendly view, in English and Spanish.</p>
-        <p class="es">Alertas por email y una vista para el celular, en inglés y español.</p></div>
+        <p class="en">Alerts by email, in English and Spanish. Phone view for the truck<span class="soon">Coming</span></p>
+        <p class="es">Alertas por email, en inglés y español. Vista para el celular<span class="soon">Pronto</span></p></div>
     </div>
   </div>
 </section>
@@ -606,15 +607,14 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <div class="tax-col" id="sys-ref">
         <h3><span class="mono">DIV-01 · REF</span><span class="en">Commercial &amp; Industrial Refrigeration</span><span class="es">Refrigeración Comercial e Industrial</span></h3>
         <ol>
-          <li data-n="01"><span class="en">Walk-in coolers</span><span class="es">Cuartos fríos</span></li>
-          <li data-n="02"><span class="en">Walk-in freezers</span><span class="es">Congeladores walk-in</span></li>
-          <li data-n="03"><span class="en">Condensing units</span><span class="es">Unidades condensadoras</span></li>
-          <li data-n="04"><span class="en">Evaporators</span><span class="es">Evaporadores</span></li>
-          <li data-n="05"><span class="en">Refrigeration rack systems</span><span class="es">Sistemas de racks de refrigeración</span></li>
-          <li data-n="06"><span class="en">Ice machines</span><span class="es">Máquinas de hielo</span></li>
-          <li data-n="07"><span class="en">Compressors</span><span class="es">Compresores</span></li>
-          <li data-n="08"><span class="en">Refrigeration controls</span><span class="es">Controles de refrigeración</span></li>
-          <li data-n="09"><span class="en">Temperature-critical refrigeration systems</span><span class="es">Sistemas de refrigeración de temperatura crítica</span></li>
+          <li data-n="01"><span class="en">Supermarket rack systems (low and medium temp)</span><span class="es">Racks de supermercado (baja y media temperatura)</span></li>
+          <li data-n="02"><span class="en">CO₂ transcritical racks</span><span class="es">Racks de CO₂ transcríticos</span></li>
+          <li data-n="03"><span class="en">Industrial ammonia systems</span><span class="es">Sistemas industriales de amoníaco</span></li>
+          <li data-n="04"><span class="en">Display cases</span><span class="es">Vitrinas refrigeradas</span></li>
+          <li data-n="05"><span class="en">Walk-in coolers and freezers</span><span class="es">Cuartos fríos y congeladores walk-in</span></li>
+          <li data-n="06"><span class="en">Condensing units and evaporators</span><span class="es">Unidades condensadoras y evaporadores</span></li>
+          <li data-n="07"><span class="en">Ice machines</span><span class="es">Máquinas de hielo</span></li>
+          <li data-n="08"><span class="en">Defrost, EEVs and refrigeration controls</span><span class="es">Deshielo, válvulas EEV y controles de refrigeración</span></li>
         </ol>
       </div>
       <div class="tax-col" id="sys-chb">
@@ -623,27 +623,26 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
           <li data-n="01"><span class="en">Air-cooled chillers</span><span class="es">Chillers enfriados por aire</span></li>
           <li data-n="02"><span class="en">Water-cooled chillers</span><span class="es">Chillers enfriados por agua</span></li>
           <li data-n="03"><span class="en">Boilers</span><span class="es">Boilers / calderas</span></li>
-          <li data-n="04"><span class="en">Chilled-water systems</span><span class="es">Sistemas de agua helada</span></li>
-          <li data-n="05"><span class="en">Hydronic heating systems</span><span class="es">Sistemas de calefacción hidrónica</span></li>
-          <li data-n="06"><span class="en">Pumps</span><span class="es">Bombas</span></li>
-          <li data-n="07"><span class="en">Cooling towers</span><span class="es">Torres de enfriamiento</span></li>
-          <li data-n="08"><span class="en">Heat exchangers</span><span class="es">Intercambiadores de calor</span></li>
-          <li data-n="09"><span class="en">Associated controls and mechanical systems</span><span class="es">Controles y sistemas mecánicos asociados</span></li>
+          <li data-n="04"><span class="en">Cooling towers</span><span class="es">Torres de enfriamiento</span></li>
+          <li data-n="05"><span class="en">Chilled-water plants</span><span class="es">Plantas de agua helada</span></li>
+          <li data-n="06"><span class="en">Hydronic heating systems</span><span class="es">Sistemas de calefacción hidrónica</span></li>
+          <li data-n="07"><span class="en">Pumps and heat exchangers</span><span class="es">Bombas e intercambiadores de calor</span></li>
+          <li data-n="08"><span class="en">Plant controls</span><span class="es">Controles de la planta</span></li>
         </ol>
       </div>
       <div class="tax-col" id="sys-cac">
         <h3><span class="mono">DIV-03 · CAC</span><span class="en">Commercial Air Conditioning</span><span class="es">Aire Acondicionado Comercial</span></h3>
         <ol>
-          <li data-n="01"><span class="en">Rooftop units / RTUs</span><span class="es">Unidades de techo / RTUs</span></li>
-          <li data-n="02"><span class="en">Package units</span><span class="es">Package units</span></li>
-          <li data-n="03"><span class="en">Split systems</span><span class="es">Sistemas split</span></li>
-          <li data-n="04"><span class="en">Heat pumps</span><span class="es">Heat pumps</span></li>
-          <li data-n="05"><span class="en">VRF / VRV systems</span><span class="es">Sistemas VRF / VRV</span></li>
-          <li data-n="06"><span class="en">VAV systems</span><span class="es">Sistemas VAV</span></li>
-          <li data-n="07"><span class="en">Air handlers</span><span class="es">Manejadoras de aire</span></li>
-          <li data-n="08"><span class="en">Economizers</span><span class="es">Economizadores</span></li>
-          <li data-n="09"><span class="en">Commercial HVAC controls</span><span class="es">Controles de HVAC comercial</span></li>
-          <li data-n="10"><span class="en">Fans and airflow systems</span><span class="es">Ventiladores y sistemas de aire</span></li>
+          <li data-n="01"><span class="en">Rooftop and package units (RTUs)</span><span class="es">Unidades de techo y paquete (RTUs)</span></li>
+          <li data-n="02"><span class="en">Split systems</span><span class="es">Sistemas split</span></li>
+          <li data-n="03"><span class="en">Heat pumps</span><span class="es">Heat pumps</span></li>
+          <li data-n="04"><span class="en">VRF / VRV systems</span><span class="es">Sistemas VRF / VRV</span></li>
+          <li data-n="05"><span class="en">VAV systems and air handlers</span><span class="es">Sistemas VAV y manejadoras de aire</span></li>
+          <li data-n="06"><span class="en">Server room cooling (CRAC)</span><span class="es">Enfriamiento de server rooms (CRAC)</span></li>
+          <li data-n="07"><span class="en">Boxcar units and pneumatic controls</span><span class="es">Unidades boxcar y controles neumáticos</span></li>
+          <li data-n="08"><span class="en">Kitchen exhaust and make-up air</span><span class="es">Extracción de cocinas y make-up air</span></li>
+          <li data-n="09"><span class="en">Economizers, fans and airflow</span><span class="es">Economizadores, ventiladores y flujo de aire</span></li>
+          <li data-n="10"><span class="en">Commercial HVAC controls</span><span class="es">Controles de HVAC comercial</span></li>
         </ol>
       </div>
     </div>
@@ -696,31 +695,6 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
   </div>
 </section>
 
-<!-- 9. BUILT IN THE FIELD -->
-<section class="sys" id="field">
-  <div class="wrap field-grid">
-    <div class="rv">
-      <span class="label"><span class="en">Origin</span><span class="es">Origen</span></span>
-      <h2 class="en">Built in the field.</h2>
-      <h2 class="es">Hecho en el campo.</h2>
-      <p class="lead en">TempLogic comes from more than a decade of hands-on commercial and industrial HVAC/R work. The technology exists because of problems met in the real world, where equipment has to stay running.</p>
-      <p class="lead es">TempLogic viene de más de diez años de trabajo directo en HVAC/R comercial e industrial. La tecnología existe por problemas reales del campo, donde los equipos tienen que seguir funcionando.</p>
-    </div>
-    <div class="places rv">
-      <span class="en">Rooftops</span><span class="es">Techos</span>
-      <span class="en">Walk-in freezers</span><span class="es">Congeladores walk-in</span>
-      <span class="en">Mechanical rooms</span><span class="es">Cuartos de máquinas</span>
-      <span class="en">Refrigeration systems</span><span class="es">Sistemas de refrigeración</span>
-      <span class="en">Service calls</span><span class="es">Llamadas de servicio</span>
-      <span class="en">Electrical troubleshooting</span><span class="es">Diagnóstico eléctrico</span>
-      <span class="en">Controls</span><span class="es">Controles</span>
-      <span class="en">Compressors</span><span class="es">Compresores</span>
-      <span class="en">Airflow problems</span><span class="es">Problemas de flujo de aire</span>
-      <span class="en">Equipment that must stay operational</span><span class="es">Equipos que no pueden parar</span>
-    </div>
-  </div>
-</section>
-
 <!-- 10. TECHNICIAN + TECHNOLOGY -->
 <section class="statement">
   <div class="wrap">
@@ -735,9 +709,9 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <div><h3 class="en">Safety checks built in</h3><h3 class="es">Revisiones de seguridad incluidas</h3>
         <p class="en">Numbers are verified, emergencies are escalated right away, and when the model and the rules disagree, a person decides.</p>
         <p class="es">Los números se verifican, las emergencias se escalan de inmediato y cuando el modelo y las reglas no coinciden, decide una persona.</p></div>
-      <div><h3 class="en">Your data stays yours</h3><h3 class="es">Sus datos son suyos</h3>
-        <p class="en">Runs on private servers with its own AI models. Your equipment data is never sold or shared.</p>
-        <p class="es">Corre en servidores privados con sus propios modelos de IA. Los datos de sus equipos nunca se venden ni se comparten.</p></div>
+      <div><h3 class="en">Read-only by design</h3><h3 class="es">Solo lectura</h3>
+        <p class="en">TempLogic only watches. It never changes setpoints or turns equipment on or off.</p>
+        <p class="es">TempLogic solo mira. Nunca cambia setpoints ni prende o apaga equipos.</p></div>
     </div>
     <p class="golden en">No guessing. No pretending certainty when certainty does not exist. When the data is not enough, TempLogic says so and escalates to a real technician.</p>
     <p class="golden es">No adivina. No finge certeza cuando no la hay. Cuando los datos no alcanzan, TempLogic lo dice y lo pasa a un técnico de verdad.</p>
@@ -753,7 +727,7 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <h2 class="es">Hecho en el campo. Diseñado para mejores decisiones.</h2>
       <div class="facts" style="margin-top:var(--s6)">
         <div><div class="big">10+</div><div class="lbl en">years of hands-on commercial HVAC and refrigeration experience</div><div class="lbl es">años de experiencia directa en HVAC y refrigeración comercial</div></div>
-        <div><div class="big">500+</div><div class="lbl en">service cases from manufacturer manuals and troubleshooting guides behind the diagnostics</div><div class="lbl es">casos de servicio de manuales de fabricantes y guías de diagnóstico detrás de cada respuesta</div></div>
+        <div><div class="big">1,400+</div><div class="lbl en">verified service cases from manufacturer manuals and troubleshooting guides behind the diagnostics</div><div class="lbl es">casos de servicio verificados, de manuales de fabricantes y guías de diagnóstico, detrás de cada respuesta</div></div>
         <div><div class="big">3</div><div class="lbl en">HVAC/R divisions, each with its own knowledge and models</div><div class="lbl es">divisiones de HVAC/R, cada una con su propio conocimiento y modelos</div></div>
       </div>
     </div>
@@ -762,12 +736,6 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <p class="es">TempLogic Systems se construyó con más de diez años de experiencia directa en HVAC y refrigeración comercial.</p>
       <p class="en">The idea did not begin in a boardroom or software lab. It came from rooftops, walk-in freezers, mechanical rooms, refrigeration systems, service calls, and the real-world pressure of determining why equipment is failing while a business depends on getting the answer right.</p>
       <p class="es">La idea no empezó en una sala de juntas ni en un laboratorio de software. Salió de techos, congeladores walk-in, cuartos de máquinas, sistemas de refrigeración, llamadas de servicio y la presión real de averiguar por qué falla un equipo mientras un negocio depende de que la respuesta sea la correcta.</p>
-      <p class="en">Over time, one pattern became impossible to ignore: equipment often begins showing changes long before it completely fails.</p>
-      <p class="es">Con el tiempo, un patrón se volvió imposible de ignorar: los equipos casi siempre empiezan a mostrar cambios mucho antes de fallar por completo.</p>
-      <div class="stack en">Temperatures drift.<br>Pressures change.<br>Motors begin drawing differently.<br>Compressors work harder.<br>Fans behave differently.<br>Controls react.</div>
-      <div class="stack es">Las temperaturas se mueven.<br>Las presiones cambian.<br>Los motores empiezan a jalar diferente.<br>Los compresores trabajan de más.<br>Los ventiladores se comportan diferente.<br>Los controles reaccionan.</div>
-      <p class="en">The information may already exist, but technicians and facility teams cannot continuously watch every reading from every piece of equipment. TempLogic was created to help close that gap.</p>
-      <p class="es">La información muchas veces ya existe, pero los técnicos y los equipos de mantenimiento no pueden vigilar todo el tiempo cada lectura de cada equipo. TempLogic nació para ayudar a cerrar esa brecha.</p>
       <p class="en">The platform combines equipment data, machine learning, manufacturer information, real troubleshooting cases, and field experience to identify abnormal operating patterns and support better diagnostic decisions.</p>
       <p class="es">La plataforma combina datos del equipo, machine learning, información de fabricantes, casos reales de diagnóstico y experiencia de campo para detectar patrones de operación anormales y apoyar mejores decisiones de diagnóstico.</p>
       <p class="en">Technology supports the technician. It does not replace the technician. Every recommendation should have a reason behind it. When there is not enough information for a reliable conclusion, the system should say so. No guessing. No pretending.</p>
@@ -796,10 +764,6 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <p class="es">TempLogic creció desde la mirada de un técnico sobre un problema que se ve en toda la industria: los datos valiosos del equipo existen, pero convertirlos en una decisión útil en el momento correcto es difícil.</p>
       <p class="en">Rather than attempting to replace field experience with artificial intelligence, Genaro began developing TempLogic around the opposite idea: combine experienced technicians with tools capable of continuously watching the equipment when the technician cannot.</p>
       <p class="es">En lugar de tratar de reemplazar la experiencia de campo con inteligencia artificial, Genaro empezó a desarrollar TempLogic con la idea contraria: unir técnicos con experiencia con herramientas capaces de vigilar el equipo todo el tiempo, cuando el técnico no puede.</p>
-      <p class="en">That philosophy remains at the center of TempLogic Systems.</p>
-      <p class="es">Esa filosofía sigue en el centro de TempLogic Systems.</p>
-      <blockquote class="en">The technician makes the decision.<br>The technology helps make that decision better.</blockquote>
-      <blockquote class="es">El técnico toma la decisión.<br>La tecnología ayuda a que esa decisión sea mejor.</blockquote>
     </div>
   </div>
 </section>
@@ -812,7 +776,9 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <h2 class="en">Be one of our first pilot sites.</h2>
       <h2 class="es">Sea uno de nuestros primeros sitios piloto.</h2>
       <p class="en">We are working with a small group of contractors and facility managers to tune TempLogic on real equipment. Tell us what you service and we will get back to you.</p>
+      <ul class="pilot-terms en"><li>Free 30-60 day pilot. No cost, no commitment.</li><li>Read-only: TempLogic only watches. It never changes setpoints or turns equipment on or off.</li><li>Your data is never sold or shared.</li></ul>
       <p class="es">Estamos trabajando con un grupo pequeño de contratistas y encargados de mantenimiento para afinar TempLogic con equipos reales. Díganos qué sistemas trabaja y le contestamos.</p>
+      <ul class="pilot-terms es"><li>Piloto gratis de 30-60 días. Sin costo ni compromiso.</li><li>Solo lectura: TempLogic solo mira. Nunca cambia setpoints ni prende o apaga equipos.</li><li>Sus datos nunca se venden ni se comparten.</li></ul>
       <div class="mail-line"><span aria-hidden="true" class="muted">→</span><a class="js-email" href="mailto:gnarofdez@templogicsystems.com">gnarofdez@templogicsystems.com</a></div>
     </div>
 
