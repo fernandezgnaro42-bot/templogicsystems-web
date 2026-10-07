@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TempLogic Pilot Program | HVAC/R Diagnostic Support Field Testing</title>
+<meta name="description" content="TempLogic Systems is seeking commercial and industrial HVAC/R companies to participate in controlled field testing of its diagnostic and predictive support software.">
+<link rel="canonical" href="https://templogicsystems.com/pilot-program">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#08141F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TempLogic Pilot Program">
+<meta property="og:description" content="TempLogic Systems is seeking commercial and industrial HVAC/R companies to participate in controlled field testing of its diagnostic and predictive support software.">
+<meta property="og:url" content="https://templogicsystems.com/pilot-program">
+<meta property="og:image" content="https://templogicsystems.com/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Shared styles copied from index.html (the site has no shared stylesheet). Keep in sync if the design tokens change. */
+/* ===== Design tokens ===== */
+:root{
+  --bg:#08141F; --surface:#101F2C; --deep:#050C12;
+  --blue:#198CFF; --cyan:#36C5F0; --ok:#35C48D; --watch:#E8A33D;
+  --text:#F4F7FA; --text-2:#AAB7C4; --text-3:#7E8D9C;
+  --line:rgba(170,183,196,.16); --line-2:rgba(170,183,196,.28);
+  --f-head:"Space Grotesk",Inter,system-ui,sans-serif;
+  --f-body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px; --s9:112px;
+  --r-sm:4px; --r:8px; --r-lg:12px;
+  --shadow:0 24px 48px rgba(0,0,0,.35);
+  --max:1180px; --nav-h:68px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{margin:0;background:var(--bg);color:var(--text-2);font:400 1rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4{font-family:var(--f-head);color:var(--text);line-height:1.12;margin:0 0 .5em;font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(2.3rem,5.2vw,4rem);letter-spacing:-.025em}
+h2{font-size:clamp(1.7rem,3.2vw,2.5rem)}
+h3{font-size:1.18rem}
+p{margin:0 0 1em}
+a{color:var(--cyan)}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s5)}
+section{padding:var(--s9) 0;position:relative}
+.mono{font-family:var(--f-mono);font-feature-settings:"zero" 1}
+.label{display:inline-flex;align-items:center;gap:var(--s2);font:500 .75rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:var(--s4)}
+.label::before{content:"";width:18px;height:1px;background:var(--cyan)}
+.lead{font-size:1.15rem;color:var(--text-2);max-width:62ch}
+.muted{color:var(--text-3)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--text);color:var(--bg);padding:8px 12px;z-index:100;border-radius:var(--r-sm)}
+.skip:focus{left:8px}
+html[data-lang="en"] .es, html[data-lang="es"] .en{display:none !important}
+
+/* ===== Buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);min-height:46px;padding:0 22px;border-radius:var(--r);font:600 .95rem/1 var(--f-body);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--blue);color:#050C12}
+.btn-primary:hover{background:#3a9dff}
+.btn-line{border-color:var(--line-2);color:var(--text)}
+.btn-line:hover{border-color:var(--text-2)}
+.btn-sm{min-height:38px;padding:0 16px;font-size:.88rem}
+.btn .arr{font-family:var(--f-mono);font-weight:400}
+
+/* ===== Navigation ===== */
+header{position:sticky;top:0;z-index:50;background:rgba(8,20,31,.88);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:var(--s5)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);flex-shrink:0;white-space:nowrap}
+.brand img{height:34px;width:auto}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm b{font:700 1rem/1 var(--f-head);letter-spacing:.14em}
+.brand .wm small{font:500 .6rem/1 var(--f-mono);letter-spacing:.16em;color:var(--text-3);margin-top:6px}
+.links{display:flex;align-items:center;gap:var(--s6)}
+.links a,.btn,.lang button{white-space:nowrap}
+.links a{color:var(--text-2);text-decoration:none;font-size:.92rem;font-weight:500}
+.links a:hover,.links a[aria-current="page"]{color:var(--text)}
+.right{display:flex;align-items:center;gap:var(--s3)}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:var(--r-sm);overflow:hidden}
+.lang button{background:none;border:0;color:var(--text-2);font:500 .75rem var(--f-mono);padding:7px 10px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+.menu-btn{display:none;background:none;border:1px solid var(--line-2);border-radius:var(--r-sm);color:var(--text);width:40px;height:38px;cursor:pointer;font-size:1.1rem}
+
+/* ===== Hero ===== */
+.hero{padding:var(--s8) 0 var(--s9);border-bottom:1px solid var(--line);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%);mask-image:linear-gradient(180deg,#000 0%,transparent 85%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s8);align-items:center}
+.hero h1{margin-bottom:var(--s5)}
+.hero .lead{margin-bottom:var(--s5)}
+.cta-row{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s6)}
+
+/* panel */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+.panel-bar{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);padding:12px 16px;border-bottom:1px solid var(--line);font:500 .72rem/1 var(--f-mono);letter-spacing:.08em;color:var(--text-3);text-transform:uppercase}
+.panel-bar .id{color:var(--text)}
+.status{display:inline-flex;align-items:center;gap:6px;font:500 .7rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:var(--r-sm);border:1px solid}
+.status i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-ok{color:var(--ok);border-color:rgba(53,196,141,.35)}
+.panel-foot{display:flex;justify-content:space-between;gap:var(--s3);padding:10px 16px;border-top:1px solid var(--line);font:400 .68rem/1.4 var(--f-mono);color:var(--text-3)}
+
+/* ===== Section layouts ===== */
+.deep{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:end;margin-bottom:var(--s7)}
+.sec-head p{margin:0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-2)}
+.step{padding:var(--s5) var(--s5) 0 0}
+.step .n{font:500 .72rem/1 var(--f-mono);color:var(--cyan);letter-spacing:.12em}
+.step h3{margin:var(--s3) 0 var(--s2);font-size:1.08rem}
+.step p{margin:0;font-size:.94rem}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.cap{background:var(--bg);padding:var(--s5)}
+.cap h3{font-size:1rem;margin-bottom:6px}
+.cap p{margin:0;font-size:.92rem}
+.statement .l1{display:block;font:600 clamp(1.8rem,4vw,3rem)/1.1 var(--f-head);letter-spacing:-.02em;color:var(--text);max-width:22ch}
+.golden{font:500 1.05rem/1.6 var(--f-head);color:var(--text);margin-top:var(--s6);max-width:60ch;padding-left:var(--s4);border-left:2px solid var(--cyan)}
+.about-copy p{color:var(--text-2)}
+.motto{font:600 1.15rem/1.6 var(--f-head);color:var(--text);margin-top:var(--s5)}
+.places{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.places span{padding:14px 0;border-bottom:1px solid var(--line);color:var(--text);font-size:.98rem}
+.places span:nth-child(odd){padding-right:var(--s4)}
+.pilot-terms{margin:var(--s5) 0 0;padding:0;list-style:none;display:grid;gap:8px}.pilot-terms li{position:relative;padding-left:20px;color:var(--text-2);font-size:.95rem;line-height:1.5}.pilot-terms li::before{content:"✓";position:absolute;left:0;color:var(--cyan)}
+
+/* ===== Contact form ===== */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--s8);align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s6);display:grid;gap:var(--s4)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+label,.flabel{display:block;font:500 .8rem/1.3 var(--f-body);color:var(--text);margin-bottom:6px}
+input,textarea,select{width:100%;font:inherit;font-size:.97rem;padding:11px 12px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--text)}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--cyan);outline-offset:0;border-color:transparent}
+textarea{min-height:110px;resize:vertical}
+.fine{font-size:.8rem;color:var(--text-3);margin:0}
+.mail-line{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s5);font:500 .9rem/1 var(--f-mono)}
+.mail-line a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:3px}
+.mail-line a:hover{border-color:var(--cyan)}
+
+/* ===== Footer ===== */
+footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7) 0 var(--s6);font-size:.88rem;color:var(--text-3)}
+.foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:var(--s6);align-items:start}
+.foot a{color:var(--text-2);text-decoration:none}
+.foot a:hover{color:var(--text)}
+.foot nav{display:grid;gap:8px}
+.foot .motto-s{font:500 .75rem/1.8 var(--f-mono);letter-spacing:.06em;color:var(--text-2);margin-top:var(--s4)}
+.foot-base{margin-top:var(--s6);padding-top:var(--s4);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s3);font:400 .72rem/1.5 var(--f-mono)}
+
+/* ===== Reveal ===== */
+.rv{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ===== Pilot page additions ===== */
+.spec{margin:0;padding:0}
+.spec > div{display:grid;grid-template-columns:150px 1fr;gap:var(--s4);padding:14px 16px;border-bottom:1px solid var(--line)}
+.spec > div:last-child{border-bottom:0}
+.spec dt{font:500 .68rem/1.6 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+.spec dd{margin:0;font-size:.95rem;color:var(--text)}
+.caps.c4{grid-template-columns:repeat(4,1fr);margin-top:var(--s7)}
+.cap .code{display:block;font:500 .7rem/1 var(--f-mono);letter-spacing:.14em;color:var(--cyan);margin-bottom:var(--s4)}
+.learn{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:var(--s6);border-top:1px solid var(--line)}
+.learn li{display:grid;grid-template-columns:44px 1fr;padding:14px 0;border-bottom:1px solid var(--line);color:var(--text);font-size:.98rem}
+.learn li::before{content:attr(data-n);font:400 .72rem/1.9 var(--f-mono);color:var(--text-3)}
+.authority{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s7);padding-top:var(--s6);border-top:1px solid var(--line)}
+.authority p{margin:0;font:500 1.05rem/1.6 var(--f-head);color:var(--text)}
+.authority p::before{content:"→";display:block;font:500 .8rem/1 var(--f-mono);color:var(--cyan);margin-bottom:var(--s3)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:start}
+.two-col h2{font-size:clamp(1.5rem,2.6vw,2rem)}
+.commit{display:flex;align-items:center;gap:var(--s3);margin-top:var(--s5);padding:var(--s4) var(--s5);border:1px solid var(--blue);border-radius:var(--r);background:rgba(25,140,255,.08);font:600 1.05rem/1.3 var(--f-head);color:var(--text)}
+.commit::before{content:"✓";font:500 1rem/1 var(--f-mono);color:var(--cyan)}
+.note{margin-top:var(--s5);font-size:.9rem;color:var(--text-3)}
+.prose{max-width:68ch}
+.form-err{font-size:.85rem;color:var(--watch);margin:0}
+.form-err:empty{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+}
+
+/* ===== Responsive (same breakpoints as index.html) ===== */
+@media (max-width:1500px){
+  header .brand .wm small{display:none}
+}
+@media (max-width:1280px){
+  .links{gap:var(--s5)}
+}
+@media (max-width:1100px){
+  .links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);padding:var(--s2) var(--s5) var(--s4);border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  .links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .menu-btn{display:block}
+  .caps.c4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  :root{--s9:80px;--s8:48px}
+  .hero-grid,.sec-head,.contact-grid,.two-col{grid-template-columns:1fr;gap:var(--s6)}
+  .steps{grid-template-columns:1fr 1fr;row-gap:var(--s5)}
+  .caps{grid-template-columns:1fr 1fr}
+  .learn{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .foot > div:first-child{grid-column:1 / -1}
+  .right .btn{display:none}
+}
+@media (max-width:560px){
+  :root{--s9:64px}
+  .wrap{padding:0 var(--s4)}
+  .brand img{height:30px}
+  .hero{padding-top:var(--s7)}
+  .steps,.caps,.caps.c4,.row2,.places,.authority{grid-template-columns:1fr}
+  .places span:nth-child(odd){padding-right:0}
+  .spec > div{grid-template-columns:1fr;gap:4px}
+  form{padding:var(--s5)}
+  .cta-row .btn{flex:1 1 100%}
+  .foot{grid-template-columns:1fr}
+}
+/* narrow phones: keep the header inside the viewport */
+@media (max-width:420px){
+  .nav{gap:var(--s3)}
+  .right{gap:var(--s2)}
+  .brand{gap:8px}
+  .brand .wm b{font-size:.82rem;letter-spacing:.1em}
+}
+@media (max-width:350px){
+  header .brand .wm{display:none}
+}
+
+/* TempLogic identity: scalable sensor nodes and bilingual mission */
+.brand{gap:12px;white-space:normal;max-width:360px}
+.brand-mark{width:52px;height:44px;flex-shrink:0;display:block}
+.brand .wm{min-width:0}
+.brand .wm b{font:700 1.65rem/1 var(--f-head);letter-spacing:-.035em}
+.brand .wm .brand-system{display:block;font:500 .58rem/1 var(--f-body);letter-spacing:.4em;color:#AAB7C4;margin-top:5px}
+.brand-tagline{display:block;font:400 .65rem/1.35 var(--f-body);letter-spacing:0;color:var(--text-2);margin-top:6px;max-width:29em}
+:root{--nav-h:88px}
+@media (max-width:1280px){
+  header .links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);padding:var(--s2) var(--s5) var(--s4);border-bottom:1px solid var(--line)}
+  header .links.open{display:flex}
+  header .links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  header .menu-btn{display:block}
+}
+@media (max-width:560px){
+  .nav{gap:8px}
+  header .brand{gap:7px;max-width:190px;flex-shrink:1}
+  header .brand-mark{width:30px;height:32px}
+  header .brand .wm b{font-size:1.22rem}
+  header .brand .wm .brand-system{font-size:.48rem;margin-top:4px}
+  header .brand-tagline{font-size:.54rem;max-width:153px;margin-top:5px}
+  header .right{gap:6px;flex-shrink:0}
+  header .lang button{padding:7px 7px}
+  header .menu-btn{width:34px}
+  footer .brand{max-width:100%}
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main"><span class="en">Skip to content</span><span class="es">Saltar al contenido</span></a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="TempLogic Systems home">
+      <svg class="brand-mark" viewBox="0 0 80 64" width="80" height="64" aria-hidden="true" focusable="false"><path d="M70 10V4H4v56h66V46" fill="none" stroke="#F4F7FA" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M13 46L29 35L47 41L68 25" fill="none" stroke="#F4F7FA" stroke-width="3.5" stroke-linejoin="round"/><g fill="#08141F" stroke="#F4F7FA" stroke-width="3"><circle cx="13" cy="46" r="4.5"/><circle cx="29" cy="35" r="4.5"/><circle cx="47" cy="41" r="4.5"/></g><circle cx="68" cy="25" r="9" fill="#08141F" stroke="#198CFF" stroke-width="3"/><circle cx="68" cy="25" r="5" fill="#198CFF"/></svg>
+      <span class="wm"><b>TempLogic</b><small class="brand-system">SYSTEMS</small><span class="brand-tagline en">Helping People Make Better Decisions.</span><span class="brand-tagline es">Ayudando a las personas a tomar mejores decisiones.</span></span>
+    </a>
+    <nav class="links" id="links" aria-label="Main">
+      <a href="index.html#platform"><span class="en">Platform</span><span class="es">Plataforma</span></a>
+      <a href="index.html#divisions"><span class="en">Solutions</span><span class="es">Soluciones</span></a>
+      <a href="index.html#method"><span class="en">Technology</span><span class="es">Tecnología</span></a>
+      <a href="index.html#about"><span class="en">About</span><span class="es">Nosotros</span></a>
+      <a href="pilot-program.html" aria-current="page"><span class="en">Pilot Program</span><span class="es">Programa piloto</span></a>
+    </nav>
+    <div class="right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#request"><span class="en">Request a Pilot</span><span class="es">Solicitar un piloto</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="links">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label"><span class="en">TempLogic Pilot Program</span><span class="es">Programa piloto TempLogic</span></span>
+      <h1 class="en">Test TempLogic in Real HVAC/R Field Conditions</h1>
+      <h1 class="es">Pruebe TempLogic en condiciones reales de campo HVAC/R</h1>
+      <p class="lead en">TempLogic Systems is inviting a limited number of commercial and industrial HVAC/R companies to participate in controlled field testing of our diagnostic and predictive support software.</p>
+      <p class="lead es">TempLogic Systems invita a un número limitado de empresas de HVAC/R comercial e industrial a participar en pruebas controladas en campo de nuestro software de apoyo para diagnóstico y predicción.</p>
+      <p class="en">The goal is simple: evaluate TempLogic under real operating conditions, collect technician feedback, measure where it provides useful diagnostic support, and identify where the system still needs improvement.</p>
+      <p class="es">El objetivo es simple: evaluar TempLogic en condiciones reales de operación, recoger la opinión de los técnicos, medir dónde da un apoyo útil al diagnóstico e identificar dónde el sistema todavía necesita mejorar.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#request"><span class="en">Request a Pilot</span><span class="es">Solicitar un piloto</span> <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-line" href="#how-it-works"><span class="en">How the Pilot Works</span><span class="es">Cómo funciona el piloto</span></a>
+      </div>
+    </div>
+
+    <div class="panel" aria-label="Pilot program summary">
+      <div class="panel-bar">
+        <span class="id"><span class="en">Pilot · Field evaluation</span><span class="es">Piloto · Evaluación en campo</span></span>
+        <span class="status st-ok"><i></i><span class="en">Accepting inquiries</span><span class="es">Recibiendo solicitudes</span></span>
+      </div>
+      <dl class="spec">
+        <div><dt><span class="en">Format</span><span class="es">Formato</span></dt><dd><span class="en">Controlled field evaluation</span><span class="es">Evaluación controlada en campo</span></dd></div>
+        <div><dt><span class="en">TempLogic role</span><span class="es">Papel de TempLogic</span></dt><dd><span class="en">Secondary diagnostic support</span><span class="es">Apoyo secundario al diagnóstico</span></dd></div>
+        <div><dt><span class="en">Final authority</span><span class="es">Decisión final</span></dt><dd><span class="en">The qualified technician</span><span class="es">El técnico calificado</span></dd></div>
+        <div><dt><span class="en">Participants</span><span class="es">Participantes</span></dt><dd><span class="en">A limited number of HVAC/R companies</span><span class="es">Un número limitado de empresas de HVAC/R</span></dd></div>
+        <div><dt><span class="en">Commitment</span><span class="es">Compromiso</span></dt><dd><span class="en">No purchase commitment</span><span class="es">Sin compromiso de compra</span></dd></div>
+      </dl>
+      <div class="panel-foot">
+        <span><span class="en">Output compared against technician-confirmed findings</span><span class="es">Resultados comparados con lo que confirma el técnico</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS TEMPLOGIC -->
+<section class="deep" id="what-is-templogic">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">What is TempLogic?</span><span class="es">¿Qué es TempLogic?</span></span>
+        <h2 class="en">Built to Support the Technician, Not Replace the Technician</h2>
+        <h2 class="es">Hecho para apoyar al técnico, no para reemplazarlo</h2>
+      </div>
+      <div>
+        <p class="en">TempLogic is diagnostic and predictive support software for commercial and industrial HVAC/R.</p>
+        <p class="es">TempLogic es software de apoyo para diagnóstico y predicción en HVAC/R comercial e industrial.</p>
+      </div>
+    </div>
+    <div class="two-col rv">
+      <p class="en" style="margin:0">It combines equipment data, diagnostic logic, machine learning, and real-world HVAC/R field knowledge to help technicians evaluate abnormal operating conditions and make better-informed diagnostic decisions.</p>
+      <p class="es" style="margin:0">Combina datos del equipo, lógica de diagnóstico, machine learning y conocimiento real de campo en HVAC/R para ayudar a los técnicos a evaluar condiciones de operación anormales y tomar decisiones de diagnóstico mejor informadas.</p>
+      <p class="en" style="margin:0">TempLogic is designed as a decision-support tool. The qualified technician remains responsible for the final diagnosis, repair decision, safety procedures, and verification of equipment operation.</p>
+      <p class="es" style="margin:0">TempLogic está diseñado como una herramienta de apoyo a la decisión. El técnico calificado sigue siendo responsable del diagnóstico final, la decisión de reparación, los procedimientos de seguridad y la verificación de la operación del equipo.</p>
+    </div>
+    <div class="caps c4 rv">
+      <div class="cap"><span class="code">01 · DATA</span><h3 class="en">Equipment Data</h3><h3 class="es">Datos del equipo</h3>
+        <p class="en">Evaluates operating information and field readings.</p>
+        <p class="es">Evalúa información de operación y lecturas de campo.</p></div>
+      <div class="cap"><span class="code">02 · ANOMALY</span><h3 class="en">Anomaly Detection</h3><h3 class="es">Detección de anomalías</h3>
+        <p class="en">Identifies conditions that may differ from expected equipment behavior.</p>
+        <p class="es">Identifica condiciones que pueden ser diferentes al comportamiento esperado del equipo.</p></div>
+      <div class="cap"><span class="code">03 · SUPPORT</span><h3 class="en">Diagnostic Support</h3><h3 class="es">Apoyo al diagnóstico</h3>
+        <p class="en">Provides structured information to help technicians evaluate likely causes and next diagnostic steps.</p>
+        <p class="es">Da información ordenada para ayudar al técnico a evaluar las causas probables y los siguientes pasos de diagnóstico.</p></div>
+      <div class="cap"><span class="code">04 · VERIFY</span><h3 class="en">Field Verification</h3><h3 class="es">Verificación en campo</h3>
+        <p class="en">System output can be compared against what the technician actually confirms in the field.</p>
+        <p class="es">El resultado del sistema se puede comparar con lo que el técnico realmente confirma en campo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE ARE TESTING -->
+<section id="what-we-test">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">What are we testing?</span><span class="es">¿Qué estamos probando?</span></span>
+        <h2 class="en">What We Want to Learn</h2>
+        <h2 class="es">Lo que queremos aprender</h2>
+      </div>
+      <p class="en">The purpose of the pilot is validation, not a sales demonstration. We want real field evidence showing where TempLogic helps, where it does not, and what needs to improve.</p>
+      <p class="es">El propósito del piloto es validar, no hacer una demostración de ventas. Queremos evidencia real de campo que muestre dónde ayuda TempLogic, dónde no, y qué necesita mejorar.</p>
+    </div>
+    <ul class="learn rv">
+      <li data-n="01"><span class="en">Whether TempLogic provides useful diagnostic direction</span><span class="es">Si TempLogic da una dirección de diagnóstico útil</span></li>
+      <li data-n="02"><span class="en">Whether it can reduce unnecessary troubleshooting steps</span><span class="es">Si puede reducir pasos de diagnóstico innecesarios</span></li>
+      <li data-n="03"><span class="en">Whether system findings agree with technician-confirmed faults</span><span class="es">Si lo que encuentra el sistema coincide con las fallas que confirma el técnico</span></li>
+      <li data-n="04"><span class="en">How technicians interact with and interpret its output</span><span class="es">Cómo los técnicos usan e interpretan sus resultados</span></li>
+      <li data-n="05"><span class="en">False positives and incorrect recommendations</span><span class="es">Falsos positivos y recomendaciones incorrectas</span></li>
+      <li data-n="06"><span class="en">Missed conditions or false negatives</span><span class="es">Condiciones que no detecta o falsos negativos</span></li>
+      <li data-n="07"><span class="en">Areas where additional data or logic are needed</span><span class="es">Áreas donde hacen falta más datos o más lógica</span></li>
+      <li data-n="08"><span class="en">Overall technician feedback</span><span class="es">La opinión general de los técnicos</span></li>
+    </ul>
+    <p class="golden rv en">Finding where TempLogic is wrong is just as valuable as confirming where it is right.</p>
+    <p class="golden rv es">Encontrar dónde se equivoca TempLogic vale tanto como confirmar dónde acierta.</p>
+  </div>
+</section>
+
+<!-- HOW THE PILOT WORKS -->
+<section class="deep" id="how-it-works">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">How the pilot works</span><span class="es">Cómo funciona el piloto</span></span>
+        <h2 class="en">A Controlled Field Evaluation</h2>
+        <h2 class="es">Una evaluación controlada en campo</h2>
+      </div>
+    </div>
+    <div class="steps rv">
+      <div class="step"><span class="n"><span class="en">STEP 01</span><span class="es">PASO 01</span></span>
+        <h3 class="en">Select</h3><h3 class="es">Seleccionar</h3>
+        <p class="en">The participating company identifies a limited number of suitable service calls, systems, or equipment for evaluation.</p>
+        <p class="es">La empresa participante escoge un número limitado de llamadas de servicio, sistemas o equipos adecuados para la evaluación.</p></div>
+      <div class="step"><span class="n"><span class="en">STEP 02</span><span class="es">PASO 02</span></span>
+        <h3 class="en">Evaluate</h3><h3 class="es">Evaluar</h3>
+        <p class="en">TempLogic is used as a secondary diagnostic support tool while the technician follows the company's normal troubleshooting and safety procedures.</p>
+        <p class="es">TempLogic se usa como herramienta secundaria de apoyo al diagnóstico mientras el técnico sigue los procedimientos normales de diagnóstico y de seguridad de la empresa.</p></div>
+      <div class="step"><span class="n"><span class="en">STEP 03</span><span class="es">PASO 03</span></span>
+        <h3 class="en">Confirm</h3><h3 class="es">Confirmar</h3>
+        <p class="en">The technician performs the diagnosis and confirms the actual fault, repair, or operating condition.</p>
+        <p class="es">El técnico hace el diagnóstico y confirma la falla real, la reparación o la condición de operación.</p></div>
+      <div class="step"><span class="n"><span class="en">STEP 04</span><span class="es">PASO 04</span></span>
+        <h3 class="en">Compare</h3><h3 class="es">Comparar</h3>
+        <p class="en">TempLogic output is compared against the technician-confirmed result and the findings are documented for evaluation.</p>
+        <p class="es">El resultado de TempLogic se compara con lo que confirmó el técnico y los hallazgos se documentan para la evaluación.</p></div>
+    </div>
+    <div class="authority rv">
+      <p class="en">The technician always remains the final authority.</p>
+      <p class="es">El técnico siempre tiene la última palabra.</p>
+      <p class="en">The pilot must not require the company to replace its existing diagnostic process.</p>
+      <p class="es">El piloto no debe obligar a la empresa a reemplazar su proceso de diagnóstico actual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section id="metrics">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">What we may measure</span><span class="es">Lo que podemos medir</span></span>
+        <h2 class="en">Pilot Evaluation Metrics</h2>
+        <h2 class="es">Métricas de evaluación del piloto</h2>
+      </div>
+    </div>
+    <div class="caps rv">
+      <div class="cap"><span class="code">M-01</span><h3 class="en">Diagnostic Agreement</h3><h3 class="es">Coincidencia del diagnóstico</h3>
+        <p class="en">How closely TempLogic findings align with technician-confirmed conditions.</p>
+        <p class="es">Qué tanto coinciden los hallazgos de TempLogic con las condiciones que confirma el técnico.</p></div>
+      <div class="cap"><span class="code">M-02</span><h3 class="en">Time to Useful Direction</h3><h3 class="es">Tiempo hasta una dirección útil</h3>
+        <p class="en">How quickly the system provides information that contributes to the troubleshooting process.</p>
+        <p class="es">Qué tan rápido el sistema da información que ayuda en el proceso de diagnóstico.</p></div>
+      <div class="cap"><span class="code">M-03</span><h3 class="en">False Positives</h3><h3 class="es">Falsos positivos</h3>
+        <p class="en">Conditions identified by the system that are not confirmed in the field.</p>
+        <p class="es">Condiciones que identifica el sistema y que no se confirman en campo.</p></div>
+      <div class="cap"><span class="code">M-04</span><h3 class="en">False Negatives</h3><h3 class="es">Falsos negativos</h3>
+        <p class="en">Relevant field conditions that the system does not identify.</p>
+        <p class="es">Condiciones relevantes en campo que el sistema no identifica.</p></div>
+      <div class="cap"><span class="code">M-05</span><h3 class="en">Diagnostic Efficiency</h3><h3 class="es">Eficiencia del diagnóstico</h3>
+        <p class="en">Whether useful troubleshooting steps can be reached with fewer unnecessary checks.</p>
+        <p class="es">Si se puede llegar a los pasos de diagnóstico útiles con menos revisiones innecesarias.</p></div>
+      <div class="cap"><span class="code">M-06</span><h3 class="en">Technician Feedback</h3><h3 class="es">Opinión de los técnicos</h3>
+        <p class="en">Whether experienced technicians find the information understandable and useful.</p>
+        <p class="es">Si los técnicos con experiencia encuentran la información clara y útil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVIDES / RECEIVES -->
+<section class="deep" id="participation">
+  <div class="wrap two-col">
+    <div class="rv">
+      <span class="label"><span class="en">What the company provides</span><span class="es">Lo que aporta la empresa</span></span>
+      <h2 class="en">What We Need From Pilot Participants</h2>
+      <h2 class="es">Lo que necesitamos de los participantes</h2>
+      <ul class="pilot-terms en">
+        <li>A limited number of appropriate HVAC/R service cases or equipment evaluations</li>
+        <li>Relevant equipment operating information when available</li>
+        <li>Technician feedback</li>
+        <li>Confirmation of the actual field finding</li>
+        <li>Confirmation of the repair or corrective action when appropriate</li>
+        <li>Permission to document pilot results under mutually agreed conditions</li>
+      </ul>
+      <ul class="pilot-terms es">
+        <li>Un número limitado de casos de servicio o evaluaciones de equipos de HVAC/R adecuados</li>
+        <li>Información relevante de la operación del equipo, cuando esté disponible</li>
+        <li>La opinión de los técnicos</li>
+        <li>Confirmación de lo que realmente se encontró en campo</li>
+        <li>Confirmación de la reparación o acción correctiva, cuando aplique</li>
+        <li>Permiso para documentar los resultados del piloto bajo condiciones acordadas por ambas partes</li>
+      </ul>
+      <p class="note en">The pilot should be designed to minimize disruption to normal service operations.</p>
+      <p class="note es">El piloto debe diseñarse para interrumpir lo menos posible las operaciones normales de servicio.</p>
+    </div>
+    <div class="rv">
+      <span class="label"><span class="en">What the company receives</span><span class="es">Lo que recibe la empresa</span></span>
+      <h2 class="en">What Pilot Participants Receive</h2>
+      <h2 class="es">Lo que reciben los participantes</h2>
+      <ul class="pilot-terms en">
+        <li>Pilot access to TempLogic for the agreed evaluation</li>
+        <li>Direct communication with TempLogic Systems during testing</li>
+        <li>A structured review of pilot findings</li>
+        <li>An opportunity to provide technician-driven product feedback</li>
+        <li>An opportunity to influence future workflow improvements</li>
+      </ul>
+      <ul class="pilot-terms es">
+        <li>Acceso de piloto a TempLogic durante la evaluación acordada</li>
+        <li>Comunicación directa con TempLogic Systems durante las pruebas</li>
+        <li>Una revisión ordenada de los hallazgos del piloto</li>
+        <li>La oportunidad de dar retroalimentación del producto desde el punto de vista del técnico</li>
+        <li>La oportunidad de influir en mejoras futuras del flujo de trabajo</li>
+      </ul>
+      <p class="commit"><span class="en">No purchase commitment</span><span class="es">Sin compromiso de compra</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section class="statement" id="safety">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">Safety and technician authority</span><span class="es">Seguridad y autoridad del técnico</span></span>
+        <h2 class="en">Built Around Technician Authority</h2>
+        <h2 class="es">Construido alrededor de la autoridad del técnico</h2>
+      </div>
+    </div>
+    <div class="rv">
+      <span class="l1 en">TempLogic provides diagnostic decision support only.</span>
+      <span class="l1 es">TempLogic solo da apoyo para decisiones de diagnóstico.</span>
+    </div>
+    <div class="authority rv">
+      <p class="en">It does not replace qualified personnel, manufacturer documentation, service literature, established safety procedures, lockout/tagout requirements, applicable codes, or proper field verification.</p>
+      <p class="es">No reemplaza al personal calificado, la documentación del fabricante, la literatura de servicio, los procedimientos de seguridad establecidos, los requisitos de bloqueo y etiquetado (lockout/tagout), los códigos aplicables ni la verificación correcta en campo.</p>
+      <p class="en">Final diagnosis, repair decisions, equipment operation, and safety procedures remain the responsibility of qualified personnel and the participating company.</p>
+      <p class="es">El diagnóstico final, las decisiones de reparación, la operación del equipo y los procedimientos de seguridad siguen siendo responsabilidad del personal calificado y de la empresa participante.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DATA AND PRIVACY -->
+<section class="deep" id="data">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">Data and privacy</span><span class="es">Datos y privacidad</span></span>
+        <h2 class="en">Pilot Data and Confidentiality</h2>
+        <h2 class="es">Datos del piloto y confidencialidad</h2>
+      </div>
+    </div>
+    <div class="about-copy prose rv">
+      <p class="en">Pilot information will be used to evaluate and improve TempLogic under the terms agreed upon with the participating company.</p>
+      <p class="es">La información del piloto se usará para evaluar y mejorar TempLogic bajo los términos acordados con la empresa participante.</p>
+      <p class="en">TempLogic Systems will not intentionally publish a participating company's identity, customer identity, proprietary information, or identifiable pilot results without permission.</p>
+      <p class="es">TempLogic Systems no publicará intencionalmente la identidad de una empresa participante, la identidad de sus clientes, información propietaria ni resultados identificables del piloto sin permiso.</p>
+      <p class="en">Specific pilot data requirements, access, retention, confidentiality, and reporting expectations should be agreed upon before testing begins.</p>
+      <p class="es">Los requisitos específicos de datos del piloto, el acceso, la retención, la confidencialidad y lo que se va a reportar deben acordarse antes de que empiecen las pruebas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="wrap two-col">
+    <div class="rv">
+      <span class="label"><span class="en">Who we are looking for</span><span class="es">A quién buscamos</span></span>
+      <h2 class="en">Who Should Participate?</h2>
+      <h2 class="es">¿Quién debería participar?</h2>
+      <p class="en">We are currently interested in speaking with commercial and industrial HVAC/R organizations that value field diagnostics, technician feedback, and practical testing.</p>
+      <p class="es">Por ahora nos interesa hablar con organizaciones de HVAC/R comercial e industrial que valoran el diagnóstico en campo, la opinión de los técnicos y las pruebas prácticas.</p>
+    </div>
+    <div class="rv">
+      <p class="flabel"><span class="en">Possible participants may include:</span><span class="es">Algunos posibles participantes:</span></p>
+      <div class="places">
+        <span><span class="en">Commercial HVAC service companies</span><span class="es">Empresas de servicio de HVAC comercial</span></span>
+        <span><span class="en">Commercial refrigeration companies</span><span class="es">Empresas de refrigeración comercial</span></span>
+        <span><span class="en">Industrial refrigeration service organizations</span><span class="es">Organizaciones de servicio de refrigeración industrial</span></span>
+        <span><span class="en">Facilities teams</span><span class="es">Equipos de mantenimiento de instalaciones</span></span>
+        <span><span class="en">Mechanical contractors</span><span class="es">Contratistas mecánicos</span></span>
+        <span><span class="en">HVAC/R service departments</span><span class="es">Departamentos de servicio de HVAC/R</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="deep" id="request">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <span class="label"><span class="en">Request a pilot</span><span class="es">Solicitar un piloto</span></span>
+      <h2 class="en">Interested in Testing TempLogic?</h2>
+      <h2 class="es">¿Le interesa probar TempLogic?</h2>
+      <p class="en">We are looking for a small number of companies willing to help evaluate TempLogic under real HVAC/R field conditions.</p>
+      <p class="es">Buscamos un número pequeño de empresas dispuestas a ayudar a evaluar TempLogic en condiciones reales de campo HVAC/R.</p>
+      <p class="commit"><span class="en">There is no purchase commitment.</span><span class="es">No hay compromiso de compra.</span></p>
+      <p class="en" style="margin-top:var(--s5)">The objective is to test the system, compare its output with technician-confirmed findings, collect honest feedback, and improve the product.</p>
+      <p class="es" style="margin-top:var(--s5)">El objetivo es probar el sistema, comparar sus resultados con lo que confirman los técnicos, recoger opiniones honestas y mejorar el producto.</p>
+      <div class="mail-line"><span aria-hidden="true" class="muted">→</span><a class="js-email" href="mailto:gnarofdez@templogicsystems.com">gnarofdez@templogicsystems.com</a></div>
+      <p class="motto">TempLogic Systems<br><span class="en">Better Diagnostics. Better Decisions. Better Lives.</span><span class="es">Mejores diagnósticos. Mejores decisiones. Mejores vidas.</span></p>
+    </div>
+
+    <form id="pilotForm" novalidate class="rv">
+      <div class="row2">
+        <div><label for="p-name"><span class="en">Name</span><span class="es">Nombre</span></label><input id="p-name" name="name" required autocomplete="name"></div>
+        <div><label for="p-company"><span class="en">Company</span><span class="es">Empresa</span></label><input id="p-company" name="company" required autocomplete="organization"></div>
+      </div>
+      <div class="row2">
+        <div><label for="p-email"><span class="en">Work email</span><span class="es">Email de trabajo</span></label><input id="p-email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="p-role"><span class="en">Role</span><span class="es">Puesto</span></label><input id="p-role" name="role" autocomplete="organization-title"></div>
+      </div>
+      <div><label for="p-type"><span class="en">Company type</span><span class="es">Tipo de empresa</span></label>
+        <select id="p-type" name="type">
+          <option value="" data-en="Select one" data-es="Escoja una opción">Select one</option>
+          <option value="Commercial HVAC" data-en="Commercial HVAC" data-es="HVAC comercial">Commercial HVAC</option>
+          <option value="Commercial Refrigeration" data-en="Commercial Refrigeration" data-es="Refrigeración comercial">Commercial Refrigeration</option>
+          <option value="Industrial Refrigeration" data-en="Industrial Refrigeration" data-es="Refrigeración industrial">Industrial Refrigeration</option>
+          <option value="Mechanical Contractor" data-en="Mechanical Contractor" data-es="Contratista mecánico">Mechanical Contractor</option>
+          <option value="Facilities / Building Operations" data-en="Facilities / Building Operations" data-es="Mantenimiento / operación de edificios">Facilities / Building Operations</option>
+          <option value="Other" data-en="Other" data-es="Otro">Other</option>
+        </select>
+      </div>
+      <div><label for="p-msg"><span class="en">Message (optional)</span><span class="es">Mensaje (opcional)</span></label><textarea id="p-msg" name="message"></textarea></div>
+      <p class="form-err" id="pilotErr" role="alert"></p>
+      <button class="btn btn-primary" type="submit"><span class="en">Request a Pilot</span><span class="es">Solicitar un piloto</span></button>
+      <p class="fine en">Opens your email app with a Pilot Program Inquiry ready to send.</p>
+      <p class="fine es">Abre su aplicación de correo con la solicitud del programa piloto lista para enviar.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="index.html" aria-label="TempLogic Systems home">
+          <svg class="brand-mark" viewBox="0 0 80 64" width="80" height="64" aria-hidden="true" focusable="false"><path d="M70 10V4H4v56h66V46" fill="none" stroke="#F4F7FA" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M13 46L29 35L47 41L68 25" fill="none" stroke="#F4F7FA" stroke-width="3.5" stroke-linejoin="round"/><g fill="#08141F" stroke="#F4F7FA" stroke-width="3"><circle cx="13" cy="46" r="4.5"/><circle cx="29" cy="35" r="4.5"/><circle cx="47" cy="41" r="4.5"/></g><circle cx="68" cy="25" r="9" fill="#08141F" stroke="#198CFF" stroke-width="3"/><circle cx="68" cy="25" r="5" fill="#198CFF"/></svg>
+          <span class="wm"><b>TempLogic</b><small class="brand-system">SYSTEMS</small><span class="brand-tagline en">Helping People Make Better Decisions.</span><span class="brand-tagline es">Ayudando a las personas a tomar mejores decisiones.</span></span>
+        </a>
+      </div>
+      <nav aria-label="Footer">
+        <a href="index.html#divisions"><span class="en">Divisions</span><span class="es">Divisiones</span></a>
+        <a href="index.html#systems"><span class="en">Systems we support</span><span class="es">Sistemas que cubrimos</span></a>
+        <a href="index.html#method"><span class="en">How TempLogic thinks</span><span class="es">Cómo piensa TempLogic</span></a>
+        <a href="index.html#about"><span class="en">About</span><span class="es">Nosotros</span></a>
+        <a href="pilot-program.html"><span class="en">Pilot Program</span><span class="es">Programa piloto</span></a>
+      </nav>
+      <div>
+        <a class="js-email" href="mailto:gnarofdez@templogicsystems.com">gnarofdez@templogicsystems.com</a>
+        <p style="margin-top:8px"><a href="#request"><span class="en">Request a pilot</span><span class="es">Solicitar un piloto</span></a></p>
+      </div>
+    </div>
+    <div class="foot-base"><span>© <span id="yr">2026</span> TempLogic Systems</span><span>COMMERCIAL • INDUSTRIAL • HVAC/R</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // >>> Company email: same address as index.html (var EMAIL there). Change both if it changes. <<<
+  var EMAIL = "gnarofdez@templogicsystems.com";
+
+  document.querySelectorAll(".js-email").forEach(function(a){ a.href = "mailto:" + EMAIL; a.textContent = EMAIL; });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var root = document.documentElement;
+  function setLang(l){
+    root.setAttribute("data-lang", l); root.lang = l;
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.setLang === l); });
+    try { localStorage.setItem("tl-lang", l); } catch(e){}
+    document.querySelectorAll("option[data-en]").forEach(function(o){ o.textContent = o.getAttribute("data-" + l); });
+  }
+  var saved = null; try { saved = localStorage.getItem("tl-lang"); } catch(e){}
+  setLang(saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en"));
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.dataset.setLang); }); });
+
+  var menuBtn = document.getElementById("menuBtn"), links = document.getElementById("links");
+  menuBtn.addEventListener("click", function(){ var o = links.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", o); });
+  links.addEventListener("click", function(e){ if (e.target.closest("a")) { links.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); } });
+
+  // Same contact flow as the index.html form: builds a mailto with the inquiry ready to send.
+  document.getElementById("pilotForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = e.target, es = root.getAttribute("data-lang") === "es", err = document.getElementById("pilotErr");
+    if (!f.name.value.trim() || !f.company.value.trim() || !f.email.value || !f.email.checkValidity()) {
+      err.textContent = es ? "Por favor escriba su nombre, su empresa y un email válido." : "Please enter your name, company and a valid work email.";
+      return;
+    }
+    err.textContent = "";
+    var body = [
+      "Pilot Program Inquiry", "",
+      "Name: " + f.name.value, "Company: " + f.company.value, "Work email: " + f.email.value,
+      "Role: " + (f.role.value || "-"), "Company type: " + (f.type.value || "-"), "", f.message.value
+    ].join("\n");
+    location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("TempLogic Pilot Program Inquiry: " + f.company.value) + "&body=" + encodeURIComponent(body);
+  });
+
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var rv = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) { rv.forEach(function(n){ n.classList.add("in"); }); }
+  else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }); }, {threshold:.12});
+    rv.forEach(function(n){ io.observe(n); });
+  }
+})();
+</script>
+</body>
+</html>
