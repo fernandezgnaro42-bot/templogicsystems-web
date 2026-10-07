@@ -344,6 +344,34 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
   .cta-row .btn{flex:1 1 100%}
   .foot{grid-template-columns:1fr}
 }
+
+/* TempLogic identity: scalable sensor nodes and bilingual mission */
+.brand{gap:12px;white-space:normal;max-width:360px}
+.brand-mark{width:52px;height:44px;flex-shrink:0;display:block}
+.brand .wm{min-width:0}
+.brand .wm b{font:700 1.65rem/1 var(--f-head);letter-spacing:-.035em}
+.brand .wm .brand-system{display:block;font:500 .58rem/1 var(--f-body);letter-spacing:.4em;color:#AAB7C4;margin-top:5px}
+.brand-tagline{display:block;font:400 .65rem/1.35 var(--f-body);letter-spacing:0;color:var(--text-2);margin-top:6px;max-width:29em}
+:root{--nav-h:88px}
+@media (max-width:1280px){
+  header .links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);padding:var(--s2) var(--s5) var(--s4);border-bottom:1px solid var(--line)}
+  header .links.open{display:flex}
+  header .links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  header .menu-btn{display:block}
+}
+@media (max-width:560px){
+  .nav{gap:8px}
+  header .brand{gap:7px;max-width:190px;flex-shrink:1}
+  header .brand-mark{width:30px;height:32px}
+  header .brand .wm b{font-size:1.22rem}
+  header .brand .wm .brand-system{font-size:.48rem;margin-top:4px}
+  header .brand-tagline{font-size:.54rem;max-width:153px;margin-top:5px}
+  header .right{gap:6px;flex-shrink:0}
+  header .lang button{padding:7px 7px}
+  header .menu-btn{width:34px}
+  footer .brand{max-width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -353,8 +381,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="TempLogic Systems">
-      <img src="logo-mark-dark-160.png" alt="" width="45" height="34">
-      <span class="wm"><b>TEMPLOGIC SYSTEMS</b><small>COMMERCIAL • INDUSTRIAL • HVAC/R</small></span>
+      <svg class="brand-mark" viewBox="0 0 80 64" width="80" height="64" aria-hidden="true" focusable="false"><path d="M70 10V4H4v56h66V46" fill="none" stroke="#F4F7FA" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M13 46L29 35L47 41L68 25" fill="none" stroke="#F4F7FA" stroke-width="3.5" stroke-linejoin="round"/><g fill="#08141F" stroke="#F4F7FA" stroke-width="3"><circle cx="13" cy="46" r="4.5"/><circle cx="29" cy="35" r="4.5"/><circle cx="47" cy="41" r="4.5"/></g><circle cx="68" cy="25" r="9" fill="#08141F" stroke="#198CFF" stroke-width="3"/><circle cx="68" cy="25" r="5" fill="#198CFF"/></svg>
+      <span class="wm"><b>TempLogic</b><small class="brand-system">SYSTEMS</small><span class="brand-tagline en">Helping People Make Better Decisions.</span><span class="brand-tagline es">Ayudando a las personas a tomar mejores decisiones.</span></span>
     </a>
     <nav class="links" id="links" aria-label="Main">
       <a href="#platform"><span class="en">Platform</span><span class="es">Plataforma</span></a>
@@ -823,11 +851,11 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
     <div class="foot">
       <div>
         <a class="brand" href="#top" aria-label="TempLogic Systems">
-          <img src="logo-mark-dark-160.png" alt="" width="45" height="34">
-          <span class="wm"><b>TEMPLOGIC SYSTEMS</b><small>COMMERCIAL • INDUSTRIAL • HVAC/R</small></span>
+          <svg class="brand-mark" viewBox="0 0 80 64" width="80" height="64" aria-hidden="true" focusable="false"><path d="M70 10V4H4v56h66V46" fill="none" stroke="#F4F7FA" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M13 46L29 35L47 41L68 25" fill="none" stroke="#F4F7FA" stroke-width="3.5" stroke-linejoin="round"/><g fill="#08141F" stroke="#F4F7FA" stroke-width="3"><circle cx="13" cy="46" r="4.5"/><circle cx="29" cy="35" r="4.5"/><circle cx="47" cy="41" r="4.5"/></g><circle cx="68" cy="25" r="9" fill="#08141F" stroke="#198CFF" stroke-width="3"/><circle cx="68" cy="25" r="5" fill="#198CFF"/></svg>
+          <span class="wm"><b>TempLogic</b><small class="brand-system">SYSTEMS</small><span class="brand-tagline en">Helping People Make Better Decisions.</span><span class="brand-tagline es">Ayudando a las personas a tomar mejores decisiones.</span></span>
         </a>
-        <p class="motto-s en">Better Diagnostics. Better Decisions. Better Lives.</p>
-        <p class="motto-s es">Mejores diagnósticos. Mejores decisiones. Mejores vidas.</p>
+        
+        
       </div>
       <nav aria-label="Footer">
         <a href="#divisions"><span class="en">Divisions</span><span class="es">Divisiones</span></a>
