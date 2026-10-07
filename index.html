@@ -372,6 +372,26 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
   footer .brand{max-width:100%}
 }
 
+
+/* Field Guides (books on Gumroad) */
+.fg-bundle{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--s6);align-items:center;padding:var(--s5);margin-bottom:var(--s6);border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--bg-2,rgba(255,255,255,.02));text-decoration:none;color:var(--text);transition:border-color .15s}
+.fg-bundle:hover{border-color:var(--blue)}
+.fg-bundle img{width:100%;height:auto;border-radius:var(--r);display:block}
+.fg-bundle h3{margin:var(--s2) 0 var(--s3)}
+.fg-bundle p{color:var(--text-2);margin:0 0 var(--s5)}
+.fg-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s5)}
+.fg-book{display:flex;flex-direction:column}
+.fg-cover img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);display:block;margin-bottom:var(--s4);transition:transform .15s}
+.fg-cover:hover img{transform:translateY(-3px)}
+.fg-book h3{font-size:1.02rem;line-height:1.3;margin:var(--s2) 0 var(--s2)}
+.fg-book p{font-size:.88rem;color:var(--text-2);margin:0 0 var(--s3)}
+.fg-book .fg-meta{font:500 .74rem/1.4 var(--f-mono);letter-spacing:.04em;color:var(--text-3)}
+.fg-buy{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;padding-top:var(--s3)}
+.fg-price{font:600 1.05rem/1 var(--f-mono);color:var(--text)}
+.fg .code{font:500 .72rem/1 var(--f-mono);letter-spacing:.14em;color:var(--cyan)}
+@media (max-width:1100px){.fg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.fg-bundle{grid-template-columns:1fr}.fg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}}
+@media (max-width:560px){.fg-grid{grid-template-columns:1fr;gap:var(--s5)}.fg-book{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:var(--s4);align-items:start}.fg-book>*{grid-column:2}.fg-book>.fg-cover{grid-column:1;grid-row:1 / span 9}.fg-cover img{margin-bottom:0}.fg-book h3{margin-top:var(--s1)}}
 </style>
 </head>
 <body>
@@ -723,6 +743,75 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
   </div>
 </section>
 
+<!-- FIELD GUIDES -->
+<section class="fg" id="guides">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">Field Guides</span><span class="es">Guías de campo</span></span>
+        <h2 class="en">Real service calls, written for the truck.</h2>
+        <h2 class="es">Llamadas de servicio reales, escritas para la camioneta.</h2>
+      </div>
+      <p class="en">The TempLogic Field Guide Series: 583 real-world HVAC/R troubleshooting cases from the field. Every case goes from the complaint to the readings, the diagnosis, the confirmed cause, the repair and the verification. Digital PDF, written by Genaro Fernández, EPA 608 Universal certified technician.</p>
+      <p class="es">La serie de guías de campo TempLogic: 583 casos reales de diagnóstico HVAC/R. Cada caso va de la queja a las lecturas, el diagnóstico, la causa confirmada, la reparación y la verificación. PDF digital, escrito por Genaro Fernández, técnico certificado EPA 608 Universal.</p>
+    </div>
+    <a class="fg-bundle rv" href="https://fernandazephyr68.gumroad.com/l/gbwkxb" target="_blank" rel="noopener">
+      <img src="field-guide-collection.jpg" width="800" height="450" loading="lazy" alt="TempLogic Field Guide Series: the complete 5-book collection">
+      <div>
+        <span class="code"><span class="en">BEST VALUE</span><span class="es">MEJOR PRECIO</span></span>
+        <h3 class="en">The complete collection: all 5 books</h3><h3 class="es">La colección completa: los 5 libros</h3>
+        <p class="en">583 cases, no repeats between books. $79.99 instead of $114.95.</p>
+        <p class="es">583 casos, sin repetir entre libros. $79.99 en vez de $114.95.</p>
+        <span class="btn btn-primary btn-sm"><span class="en">Get the collection</span><span class="es">Comprar la colección</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+    <div class="fg-grid rv">
+      <article class="fg-book">
+        <a class="fg-cover" href="https://fernandazephyr68.gumroad.com/l/unurps" target="_blank" rel="noopener"><img src="field-guide-vol1.jpg" width="400" height="600" loading="lazy" alt="Vol. 1: HVAC/R Field Troubleshooting"></a>
+        <span class="code">VOL. 1</span>
+        <h3 class="en">HVAC/R Field Troubleshooting</h3><h3 class="es">HVAC/R Field Troubleshooting</h3>
+        <p class="fg-meta en">150 real-world cases · 166 pages</p><p class="fg-meta es">150 casos reales · 166 páginas</p>
+        <p class="en">Refrigeration, commercial AC, VRF/VAV, chillers, boilers, kitchens and data centers.</p><p class="es">Refrigeración, aire comercial, VRF/VAV, chillers, calderas, cocinas y data centers.</p>
+        <div class="fg-buy"><span class="fg-price">$29.99</span><a class="btn btn-line btn-sm" href="https://fernandazephyr68.gumroad.com/l/unurps" target="_blank" rel="noopener"><span class="en">Get the PDF</span><span class="es">Comprar el PDF</span> <span class="arr">→</span></a></div>
+      </article>
+      <article class="fg-book">
+        <a class="fg-cover" href="https://fernandazephyr68.gumroad.com/l/byyuwp" target="_blank" rel="noopener"><img src="field-guide-vol2.jpg" width="400" height="600" loading="lazy" alt="Vol. 2: Commercial &amp; Industrial Refrigeration"></a>
+        <span class="code">VOL. 2</span>
+        <h3 class="en">Commercial &amp; Industrial Refrigeration</h3><h3 class="es">Refrigeración Comercial e Industrial</h3>
+        <p class="fg-meta en">106 real-world cases · 121 pages</p><p class="fg-meta es">106 casos reales · 121 páginas</p>
+        <p class="en">Supermarket racks, CO₂, ammonia, walk-ins, display cases and ice machines.</p><p class="es">Racks de supermercado, CO₂, amoníaco, cuartos fríos, vitrinas y máquinas de hielo.</p>
+        <div class="fg-buy"><span class="fg-price">$24.99</span><a class="btn btn-line btn-sm" href="https://fernandazephyr68.gumroad.com/l/byyuwp" target="_blank" rel="noopener"><span class="en">Get the PDF</span><span class="es">Comprar el PDF</span> <span class="arr">→</span></a></div>
+      </article>
+      <article class="fg-book">
+        <a class="fg-cover" href="https://fernandazephyr68.gumroad.com/l/edegd" target="_blank" rel="noopener"><img src="field-guide-vol3.jpg" width="400" height="600" loading="lazy" alt="Vol. 3: Data Center &amp; Precision Cooling"></a>
+        <span class="code">VOL. 3</span>
+        <h3 class="en">Data Center &amp; Precision Cooling</h3><h3 class="es">Data Center y Enfriamiento de Precisión</h3>
+        <p class="fg-meta en">76 real-world cases · 89 pages</p><p class="fg-meta es">76 casos reales · 89 páginas</p>
+        <p class="en">CRAC/CRAH units, EXVs, EC fans, humidity, condensers and controls.</p><p class="es">Unidades CRAC/CRAH, EXV, ventiladores EC, humedad, condensadores y controles.</p>
+        <div class="fg-buy"><span class="fg-price">$19.99</span><a class="btn btn-line btn-sm" href="https://fernandazephyr68.gumroad.com/l/edegd" target="_blank" rel="noopener"><span class="en">Get the PDF</span><span class="es">Comprar el PDF</span> <span class="arr">→</span></a></div>
+      </article>
+      <article class="fg-book">
+        <a class="fg-cover" href="https://fernandazephyr68.gumroad.com/l/fzigs" target="_blank" rel="noopener"><img src="field-guide-vol4.jpg" width="400" height="600" loading="lazy" alt="Vol. 4: Commercial HVAC: Air Handlers, VAV &amp; Controls"></a>
+        <span class="code">VOL. 4</span>
+        <h3 class="en">Commercial HVAC: Air Handlers, VAV &amp; Controls</h3><h3 class="es">HVAC Comercial: Manejadoras, VAV y Controles</h3>
+        <p class="fg-meta en">51 real-world cases · 64 pages</p><p class="fg-meta es">51 casos reales · 64 páginas</p>
+        <p class="en">AHUs, VFDs, VAV boxes, building automation, rooftop units and VRF.</p><p class="es">Manejadoras, variadores, cajas VAV, automatización, unidades de techo y VRF.</p>
+        <div class="fg-buy"><span class="fg-price">$14.99</span><a class="btn btn-line btn-sm" href="https://fernandazephyr68.gumroad.com/l/fzigs" target="_blank" rel="noopener"><span class="en">Get the PDF</span><span class="es">Comprar el PDF</span> <span class="arr">→</span></a></div>
+      </article>
+      <article class="fg-book">
+        <a class="fg-cover" href="https://fernandazephyr68.gumroad.com/l/barpjd" target="_blank" rel="noopener"><img src="field-guide-vol5.jpg" width="400" height="600" loading="lazy" alt="Vol. 5: Diagnóstico de Campo HVAC/R"></a>
+        <span class="code">VOL. 5</span>
+        <h3 class="en">Diagnóstico de Campo HVAC/R</h3><h3 class="es">Diagnóstico de Campo HVAC/R</h3>
+        <p class="fg-meta en">200 real-world cases · 251 pages · in Spanish</p><p class="fg-meta es">200 casos reales · 251 páginas · en español</p>
+        <p class="en">Walk-ins, display cases, ice machines, racks, chillers, towers, boilers and commercial AC.</p><p class="es">Cámaras frías, vitrinas, máquinas de hielo, racks, chillers, torres, calderas y aire comercial.</p>
+        <div class="fg-buy"><span class="fg-price">$24.99</span><a class="btn btn-line btn-sm" href="https://fernandazephyr68.gumroad.com/l/barpjd" target="_blank" rel="noopener"><span class="en">Get the PDF</span><span class="es">Comprar el PDF</span> <span class="arr">→</span></a></div>
+      </article>
+    </div>
+    <p class="note en">Sold through Gumroad. Always verify pressures, temperatures, settings and procedures against the equipment nameplate and the manufacturer's service literature.</p>
+    <p class="note es">Se venden por Gumroad. Siempre verifique presiones, temperaturas, ajustes y procedimientos con la placa del equipo y la literatura de servicio del fabricante.</p>
+  </div>
+</section>
+
 <!-- 10. TECHNICIAN + TECHNOLOGY -->
 <section class="statement">
   <div class="wrap">
@@ -863,6 +952,7 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <a href="#systems"><span class="en">Systems we support</span><span class="es">Sistemas que cubrimos</span></a>
         <a href="#method"><span class="en">How TempLogic thinks</span><span class="es">Cómo piensa TempLogic</span></a>
         <a href="#about"><span class="en">About</span><span class="es">Nosotros</span></a>
+        <a href="#guides"><span class="en">Field Guides</span><span class="es">Guías de campo</span></a>
         <a href="pilot-program.html"><span class="en">Pilot Program</span><span class="es">Programa piloto</span></a>
       </nav>
       <div>
