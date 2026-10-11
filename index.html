@@ -708,8 +708,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <h2 class="en">What an early warning looks like.</h2>
         <h2 class="es">Así se ve un aviso a tiempo.</h2>
       </div>
-      <p class="en">An illustration with sample data. It shows how readings, history and a service case come together into one recommendation, and what happens when the data is not enough.</p>
-      <p class="es">Una ilustración con datos de ejemplo. Muestra cómo las lecturas, el historial y un caso de servicio se juntan en una recomendación, y qué pasa cuando los datos no alcanzan.</p>
+      <p class="en">An illustration with sample data, not a live site. It shows how readings, history and a service case come together into one recommendation, and what happens when the data is not enough. On a pilot, the 21-day score is still being checked against real equipment. You get the readings, the case, and a straight answer when the data is thin. Until the phone view exists, the alert arrives by email, in English or Spanish.</p>
+      <p class="es">Una ilustración con datos de ejemplo, no un sitio en vivo. Muestra cómo las lecturas, el historial y un caso de servicio se juntan en una recomendación, y qué pasa cuando los datos no alcanzan. En un piloto, el riesgo a 21 días todavía se está comprobando con equipos reales. Usted recibe las lecturas, el caso, y una respuesta directa cuando los datos no alcanzan. Hasta que exista la vista para el celular, el aviso llega por email, en inglés o en español.</p>
     </div>
     <div class="demo-grid rv">
       <div class="panel">
@@ -947,21 +947,21 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
           <label for="f-controller"><span class="en">What already records the readings?</span><span class="es">¿Qué ya registra las lecturas?</span></label>
           <select id="f-controller" name="controller">
             <option value="">—</option>
-            <option value="Logs or a spreadsheet">Logs or a spreadsheet / Bitácoras o una hoja de cálculo</option>
-            <option value="CPC, Emerson E2 or E3">CPC, Emerson E2 or E3</option>
-            <option value="Danfoss">Danfoss</option>
-            <option value="Micro Thermo">Micro Thermo</option>
-            <option value="BACnet or Modbus export">BACnet or Modbus export</option>
-            <option value="Not sure">Not sure / No estoy seguro</option>
+            <option value="Logs or a spreadsheet" data-en="Logs or a spreadsheet" data-es="Bitácoras o una hoja de cálculo">Logs or a spreadsheet</option>
+            <option value="CPC, Emerson E2 or E3" data-en="CPC, Emerson E2 or E3" data-es="CPC, Emerson E2 o E3">CPC, Emerson E2 or E3</option>
+            <option value="Danfoss" data-en="Danfoss" data-es="Danfoss">Danfoss</option>
+            <option value="Micro Thermo" data-en="Micro Thermo" data-es="Micro Thermo">Micro Thermo</option>
+            <option value="BACnet or Modbus export" data-en="BACnet or Modbus export" data-es="Export de BACnet o Modbus">BACnet or Modbus export</option>
+            <option value="Not sure" data-en="Not sure" data-es="No estoy seguro">Not sure</option>
           </select>
         </div>
         <div>
           <label for="f-systems"><span class="en">How many systems?</span><span class="es">¿Cuántos equipos?</span></label>
           <select id="f-systems" name="systems">
             <option value="">—</option>
-            <option value="1-2">1–2</option>
-            <option value="3-10">3–10</option>
-            <option value="More than 10">More than 10 / Más de 10</option>
+            <option value="1-2" data-en="1–2" data-es="1–2">1–2</option>
+            <option value="3-10" data-en="3–10" data-es="3–10">3–10</option>
+            <option value="More than 10" data-en="More than 10" data-es="Más de 10">More than 10</option>
           </select>
         </div>
       </div>
@@ -1037,7 +1037,7 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
     root.setAttribute("data-lang", l); root.lang = l;
     document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.setLang === l); });
     try { localStorage.setItem("tl-lang", l); } catch(e){}
-    document.querySelectorAll("text[data-en]").forEach(function(t){ t.textContent = t.getAttribute("data-" + l); });
+    document.querySelectorAll("text[data-en], option[data-en]").forEach(function(t){ t.textContent = t.getAttribute("data-" + l); });
   }
   var saved = null; try { saved = localStorage.getItem("tl-lang"); } catch(e){}
   setLang(saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en"));
