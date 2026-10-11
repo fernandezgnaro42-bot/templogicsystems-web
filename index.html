@@ -253,8 +253,8 @@ svg.trend{width:100%;height:auto;display:block;overflow:visible}
 form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s6);display:grid;gap:var(--s4)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
 label,.flabel{display:block;font:500 .8rem/1.3 var(--f-body);color:var(--text);margin-bottom:6px}
-input,textarea{width:100%;font:inherit;font-size:.97rem;padding:11px 12px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--text)}
-input:focus,textarea:focus{outline:2px solid var(--cyan);outline-offset:0;border-color:transparent}
+input,textarea,select{width:100%;font:inherit;font-size:.97rem;padding:11px 12px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--text)}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--cyan);outline-offset:0;border-color:transparent}
 textarea{min-height:110px;resize:vertical}
 fieldset{border:0;margin:0;padding:0}
 .checks{display:grid;gap:var(--s2)}
@@ -463,6 +463,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <span class="msg"><span class="en">Current trending above baseline. Check condenser airflow.</span><span class="es">Corriente arriba de lo normal. Revisar el aire del condensador.</span></span>
         <span><span class="en">Sample data</span><span class="es">Datos de ejemplo</span></span>
       </div>
+      <p class="note en">The picture is sample data. On a pilot, the 21-day score is still being checked against real equipment. You get the readings, the case, and a straight answer when the data is thin.</p>
+      <p class="note es">La imagen es un ejemplo. En un piloto, el riesgo a 21 días todavía se está comprobando con equipos reales. Usted recibe las lecturas, el caso, y una respuesta directa cuando los datos no alcanzan.</p>
     </div>
   </div>
 </section>
@@ -573,8 +575,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <p class="en">Models learn each unit's normal and flag readings that start drifting away from it.</p>
         <p class="es">Los modelos aprenden lo normal de cada equipo y marcan las lecturas que se empiezan a salir.</p></div>
       <div class="cap"><h3 class="en">21-day failure risk</h3><h3 class="es">Riesgo de falla a 21 días</h3>
-        <p class="en">A risk score per unit and the component most likely involved: compressor, evaporator fan motor or condenser fan motor. Being calibrated on real equipment during our pilots.</p>
-        <p class="es">Un riesgo por equipo y el componente más probable: compresor, motor del evaporador o motor del condensador. Se está calibrando con equipos reales durante los pilotos.</p></div>
+        <p class="en">A risk score per unit and the component most likely involved: compressor, evaporator fan motor or condenser fan motor. Still being checked on real equipment. Until that check is done, a pilot gets the readings, the case, and a straight answer when the data is thin.</p>
+        <p class="es">Un riesgo por equipo y el componente más probable: compresor, motor del evaporador o motor del condensador. Todavía se está comprobando con equipos reales. Mientras tanto, un piloto recibe las lecturas, el caso, y una respuesta directa cuando los datos no alcanzan.</p></div>
       <div class="cap"><h3 class="en">Assistant that cites sources</h3><h3 class="es">Asistente que cita sus fuentes</h3>
         <p class="en">Every alert comes with the matching case from manufacturer manuals and real service work, with the source shown. Ask-why chat screen<span class="soon">Coming</span></p>
         <p class="es">Cada alerta trae el caso que aplica, de manuales y servicio real, con la fuente a la vista. Pantalla para preguntar por qué<span class="soon">Pronto</span></p></div>
@@ -900,10 +902,18 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <span class="label"><span class="en">Early access</span><span class="es">Acceso anticipado</span></span>
       <h2 class="en">Be one of our first pilot sites.</h2>
       <h2 class="es">Sea uno de nuestros primeros sitios piloto.</h2>
-      <p class="en">We are working with a small group of contractors and facility managers to tune TempLogic on real equipment. Tell us what you service and we will get back to you.</p>
-      <ul class="pilot-terms en"><li>Contact us to discuss pilot scope, duration, and pricing for your facility.</li><li>Read-only: TempLogic only watches. It never changes setpoints or turns equipment on or off.</li><li>Your data is never sold or shared.</li></ul>
-      <p class="es">Estamos trabajando con un grupo pequeño de contratistas y encargados de mantenimiento para afinar TempLogic con equipos reales. Díganos qué sistemas trabaja y le contestamos.</p>
-      <ul class="pilot-terms es"><li>Contáctenos para definir el alcance, la duración y el precio de un piloto para su instalación.</li><li>Solo lectura: TempLogic solo mira. Nunca cambia setpoints ni prende o apaga equipos.</li><li>Sus datos nunca se venden ni se comparten.</li></ul>
+      <p class="en">We are working with a small group of contractors and facility managers to tune TempLogic on real equipment. Tell us what is on the site. We will get back to you.</p>
+      <p class="es">Estamos trabajando con un grupo pequeño de contratistas y encargados de mantenimiento para afinar TempLogic con equipos reales. Díganos qué hay en el sitio. Le contestamos.</p>
+      <ul class="pilot-terms en">
+        <li>A first pilot is two systems you already maintain, read-only, long enough to see drift. No purchase commitment.</li>
+        <li>Read-only: TempLogic only watches. It never changes setpoints or turns equipment on or off.</li>
+        <li>Your data is never sold or shared.</li>
+      </ul>
+      <ul class="pilot-terms es">
+        <li>Un primer piloto son dos equipos que ya mantiene, solo lectura, el tiempo suficiente para ver un desvío. Sin compromiso de compra.</li>
+        <li>Solo lectura: TempLogic solo mira. Nunca cambia setpoints ni prende o apaga equipos.</li>
+        <li>Sus datos nunca se venden ni se comparten.</li>
+      </ul>
       <p style="margin:var(--s5) 0 0"><a href="pilot-program.html"><span class="en">How the pilot program works →</span><span class="es">Cómo funciona el programa piloto →</span></a></p>
       <div class="mail-line"><span aria-hidden="true" class="muted">→</span><a class="js-email" href="mailto:gnarofdez@templogicsystems.com">gnarofdez@templogicsystems.com</a></div>
     </div>
@@ -918,17 +928,67 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <div><label for="f-phone"><span class="en">Phone</span><span class="es">Teléfono</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
       </div>
       <fieldset>
-        <legend class="flabel"><span class="en">What do you service?</span><span class="es">¿Qué sistemas trabaja?</span></legend>
+        <legend class="flabel"><span class="en">I am</span><span class="es">Soy</span></legend>
+        <div class="checks">
+          <label><input type="radio" name="role" value="Contractor"><span class="en">A contractor</span><span class="es">Contratista</span></label>
+          <label><input type="radio" name="role" value="Site owner or facility manager"><span class="en">The owner or facility manager</span><span class="es">Dueño o encargado del sitio</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="flabel"><span class="en">What do you have on site?</span><span class="es">¿Qué tiene en el sitio?</span></legend>
         <div class="checks">
           <label><input type="checkbox" name="sec" value="Commercial & Industrial Refrigeration"><span class="en">Commercial &amp; Industrial Refrigeration</span><span class="es">Refrigeración Comercial e Industrial</span></label>
           <label><input type="checkbox" name="sec" value="Chillers & Boilers"><span class="en">Chillers &amp; Boilers</span><span class="es">Chillers y Boilers</span></label>
           <label><input type="checkbox" name="sec" value="Commercial Air Conditioning"><span class="en">Commercial Air Conditioning</span><span class="es">Aire Acondicionado Comercial</span></label>
         </div>
       </fieldset>
+      <div class="row2">
+        <div>
+          <label for="f-controller"><span class="en">What already records the readings?</span><span class="es">¿Qué ya registra las lecturas?</span></label>
+          <select id="f-controller" name="controller">
+            <option value="">—</option>
+            <option value="Logs or a spreadsheet">Logs or a spreadsheet / Bitácoras o una hoja de cálculo</option>
+            <option value="CPC, Emerson E2 or E3">CPC, Emerson E2 or E3</option>
+            <option value="Danfoss">Danfoss</option>
+            <option value="Micro Thermo">Micro Thermo</option>
+            <option value="BACnet or Modbus export">BACnet or Modbus export</option>
+            <option value="Not sure">Not sure / No estoy seguro</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-systems"><span class="en">How many systems?</span><span class="es">¿Cuántos equipos?</span></label>
+          <select id="f-systems" name="systems">
+            <option value="">—</option>
+            <option value="1-2">1–2</option>
+            <option value="3-10">3–10</option>
+            <option value="More than 10">More than 10 / Más de 10</option>
+          </select>
+        </div>
+      </div>
+      <fieldset>
+        <legend class="flabel"><span class="en">Who should get the alert?</span><span class="es">¿Quién debe recibir el aviso?</span></legend>
+        <div class="checks">
+          <label><input type="radio" name="alert" value="Me"><span class="en">Me</span><span class="es">Yo</span></label>
+          <label><input type="radio" name="alert" value="My contractor"><span class="en">My contractor</span><span class="es">Mi contratista</span></label>
+          <label><input type="radio" name="alert" value="Both"><span class="en">Both</span><span class="es">Los dos</span></label>
+        </div>
+      </fieldset>
       <div><label for="f-msg"><span class="en">Anything else?</span><span class="es">¿Algo más?</span></label><textarea id="f-msg" name="message"></textarea></div>
+      <ul class="pilot-terms en">
+        <li>Today: a controller export, or the logs you already keep. No new gateway.</li>
+        <li>Back to you: an email, in English or Spanish, with the readings and the matching case — or a straight "not enough data."</li>
+        <li>Never: a setpoint change, a start, or a stop.</li>
+      </ul>
+      <ul class="pilot-terms es">
+        <li>Hoy: un export del controlador, o las bitácoras que ya guarda. Sin gateway nuevo.</li>
+        <li>De vuelta: un correo, en inglés o en español, con las lecturas y el caso que coincide — o un "no hay datos suficientes."</li>
+        <li>Nunca: un cambio de setpoint, un arranque o un paro.</li>
+      </ul>
+      <p class="note en">This button opens your email app with the message ready. If no app opens, write to gnarofdez@templogicsystems.com.</p>
+      <p class="note es">Este botón abre su aplicación de correo con el mensaje listo. Si no se abre ninguna, escriba a gnarofdez@templogicsystems.com.</p>
       <button class="btn btn-primary" type="submit"><span class="en">Request Early Access</span><span class="es">Pedir acceso anticipado</span></button>
-      <p class="fine en">Opens your email app with the message ready to send.</p>
-      <p class="fine es">Abre su aplicación de correo con el mensaje listo para enviar.</p>
+      <p class="fine en">A wrong flag is a note back to us, not a command. The technician makes the call.</p>
+      <p class="fine es">Un aviso equivocado es una nota de regreso, no una orden. La decisión la toma el técnico.</p>
     </form>
   </div>
 </section>
@@ -994,10 +1054,28 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       alert(es ? "Por favor escriba su nombre y un email válido." : "Please enter your name and a valid email.");
       return;
     }
-    var secs = Array.prototype.map.call(f.querySelectorAll('input[name="sec"]:checked'), function(c){ return c.value; }).join(", ") || "-";
+    function picked(name){
+      var nodes = f.querySelectorAll('[name="' + name + '"]');
+      var out = [];
+      for (var i = 0; i < nodes.length; i++) if (nodes[i].checked) out.push(nodes[i].value);
+      return out.join(", ") || "-";
+    }
+    function one(name){
+      var el = f.elements[name];
+      return (el && el.value) ? el.value : "-";
+    }
     var body = [
-      "Name: " + f.name.value, "Company: " + f.company.value, "Email: " + f.email.value,
-      "Phone: " + f.phone.value, "Divisions: " + secs, "", f.message.value
+      "Name: " + f.name.value,
+      "Company: " + f.company.value,
+      "Email: " + f.email.value,
+      "Phone: " + f.phone.value,
+      "Role: " + picked("role"),
+      "Divisions: " + picked("sec"),
+      "Already recording: " + one("controller"),
+      "How many systems: " + one("systems"),
+      "Alert goes to: " + picked("alert"),
+      "",
+      f.message.value
     ].join("\n");
     location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("TempLogic early access: " + (f.company.value || f.name.value)) + "&body=" + encodeURIComponent(body);
   });
