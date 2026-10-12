@@ -152,6 +152,7 @@ footer a{color:var(--text-2)}
 .phones{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 .phones .shot{max-width:300px}
 @media (max-width:600px){.phones{grid-template-columns:1fr}}
+footer .family{display:flex;flex-wrap:wrap;gap:8px 14px;width:100%;padding-bottom:10px}footer .family a{color:var(--text-3);text-decoration:none}footer .family a[aria-current=page]{color:var(--text)}
 </style>
 </head>
 <body>
@@ -239,6 +240,7 @@ footer a{color:var(--text-2)}
 </main>
 <footer>
   <div class="wrap">
+    <nav class="family" aria-label="TempLogic"><a href="/">TempLogic</a><a href="/brujula/">Brújula</a><a href="/latenza/">Latenza</a><a href="/equipulse/">Equipulse</a><a href="/itertrace/" aria-current="page">Itertrace</a><a href="/field-guides">Field guides</a><a href="/pilot-program">Pilot</a></nav>
     <span>© <span id="yr">2026</span> TempLogic Systems</span>
     <span><a href="https://templogicsystems.com/">templogicsystems.com</a></span>
   </div>
