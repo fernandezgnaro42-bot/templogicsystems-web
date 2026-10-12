@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TempLogic Systems | Commercial &amp; Industrial HVAC/R Intelligence</title>
-<meta name="description" content="TempLogic Systems helps technicians understand what commercial and industrial HVAC/R equipment is telling them before small problems become larger failures. Field Guide Series: 583 real troubleshooting cases, sold as PDFs, from $14.99.">
+<meta name="description" content="TempLogic Systems helps technicians understand what commercial and industrial HVAC/R equipment is telling them before small problems become larger failures. Monitoring and diagnostics for refrigeration, chillers and boilers, and commercial air conditioning. Built from real field experience.">
 <link rel="canonical" href="https://templogicsystems.com/">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#08141F">
 <meta property="og:type" content="website">
 <meta property="og:title" content="TempLogic Systems">
-<meta property="og:description" content="Know what your equipment is telling you. Also 583 real HVAC/R troubleshooting cases in the Field Guide Series, from $14.99.">
+<meta property="og:description" content="Know what your equipment is telling you. Commercial and industrial HVAC/R monitoring and diagnostics, built from real field experience.">
 <meta property="og:url" content="https://templogicsystems.com/">
 <meta property="og:image" content="https://templogicsystems.com/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -253,8 +253,8 @@ svg.trend{width:100%;height:auto;display:block;overflow:visible}
 form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s6);display:grid;gap:var(--s4)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
 label,.flabel{display:block;font:500 .8rem/1.3 var(--f-body);color:var(--text);margin-bottom:6px}
-input,textarea,select{width:100%;font:inherit;font-size:.97rem;padding:11px 12px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--text)}
-input:focus,textarea:focus,select:focus{outline:2px solid var(--cyan);outline-offset:0;border-color:transparent}
+input,textarea{width:100%;font:inherit;font-size:.97rem;padding:11px 12px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg);color:var(--text)}
+input:focus,textarea:focus{outline:2px solid var(--cyan);outline-offset:0;border-color:transparent}
 textarea{min-height:110px;resize:vertical}
 fieldset{border:0;margin:0;padding:0}
 .checks{display:grid;gap:var(--s2)}
@@ -392,6 +392,21 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
 @media (max-width:1100px){.fg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.fg-bundle{grid-template-columns:1fr}.fg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}}
 @media (max-width:560px){.fg-grid{grid-template-columns:1fr;gap:var(--s5)}.fg-book{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:var(--s4);align-items:start}.fg-book>*{grid-column:2}.fg-book>.fg-cover{grid-column:1;grid-row:1 / span 9}.fg-cover img{margin-bottom:0}.fg-book h3{margin-top:var(--s1)}}
+
+/* Herramientas: entrada a las páginas de producto */
+.tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s5)}
+.tool{display:flex;flex-direction:column;padding:var(--s5);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);text-decoration:none;color:inherit;transition:border-color .15s}
+.tool:hover{border-color:var(--blue)}
+.tool .code{font:500 .72rem/1.3 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.tool h3{font-size:1.15rem;line-height:1.3;margin:var(--s3) 0 var(--s2)}
+.tool p{font-size:.92rem;color:var(--text-2);margin:0 0 var(--s4)}
+.tool .go{margin-top:auto;font-weight:600;font-size:.9rem;color:var(--cyan)}
+@media (max-width:1100px){.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.tools-grid{grid-template-columns:1fr}}
+/* En pantalla ancha el encabezado solo aguanta cinco ligas en español; estas dos salen en el menú plegado */
+@media (min-width:1281px){header .links a.only-menu{display:none}}
+/* Entre 1281 y 1340 px el encabezado en español rebasaba 11 px; se junta un poco el menú */
+@media (min-width:1281px) and (max-width:1340px){header .links{gap:var(--s4)}}
 </style>
 </head>
 <body>
@@ -409,7 +424,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <a href="#divisions"><span class="en">Solutions</span><span class="es">Soluciones</span></a>
       <a href="#method"><span class="en">Technology</span><span class="es">Tecnología</span></a>
       <a href="#about"><span class="en">About</span><span class="es">Nosotros</span></a>
-      <a href="field-guides.html"><span class="en">Field Guides</span><span class="es">Guías de campo</span></a>
+      <a class="only-menu" href="field-guides.html"><span class="en">Field Guides</span><span class="es">Guías de campo</span></a>
+      <a class="only-menu" href="#tools"><span class="en">Tools</span><span class="es">Herramientas</span></a>
       <a href="#contact"><span class="en">Early Access</span><span class="es">Acceso anticipado</span></a>
     </nav>
     <div class="right">
@@ -443,6 +459,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <p class="cred es">Construido con experiencia real de campo en HVAC/R comercial e industrial.</p>
       <p class="cred en"><a href="field-guides.html">Field guides</a> — 583 real cases, from $14.99.</p>
       <p class="cred es"><a href="field-guides.html">Guías de campo</a> — 583 casos reales, desde $14.99.</p>
+      <p class="cred en"><a href="#tools">Tools</a> — <a href="/latenza/">Latenza</a> · <a href="/brujula/">Brújula OS</a> · <a href="/equipulse/">Equipulse</a> · <a href="/itertrace/">Itertrace</a></p>
+      <p class="cred es"><a href="#tools">Herramientas</a> — <a href="/latenza/">Latenza</a> · <a href="/brujula/">Brújula OS</a> · <a href="/equipulse/">Equipulse</a> · <a href="/itertrace/">Itertrace</a></p>
     </div>
 
     <div class="panel" role="img" aria-label="Illustration with sample data: rooftop unit telemetry. Compressor current is trending above its learned baseline; status Watch.">
@@ -466,8 +484,6 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <span class="msg"><span class="en">Current trending above baseline. Check condenser airflow.</span><span class="es">Corriente arriba de lo normal. Revisar el aire del condensador.</span></span>
         <span><span class="en">Sample data</span><span class="es">Datos de ejemplo</span></span>
       </div>
-      <p class="note en">The picture is sample data. On a pilot, the 21-day score is still being checked against real equipment. You get the readings, the case, and a straight answer when the data is thin.</p>
-      <p class="note es">La imagen es un ejemplo. En un piloto, el riesgo a 21 días todavía se está comprobando con equipos reales. Usted recibe las lecturas, el caso, y una respuesta directa cuando los datos no alcanzan.</p>
     </div>
   </div>
 </section>
@@ -578,8 +594,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <p class="en">Models learn each unit's normal and flag readings that start drifting away from it.</p>
         <p class="es">Los modelos aprenden lo normal de cada equipo y marcan las lecturas que se empiezan a salir.</p></div>
       <div class="cap"><h3 class="en">21-day failure risk</h3><h3 class="es">Riesgo de falla a 21 días</h3>
-        <p class="en">A risk score per unit and the component most likely involved: compressor, evaporator fan motor or condenser fan motor. Still being checked on real equipment. Until that check is done, a pilot gets the readings, the case, and a straight answer when the data is thin.</p>
-        <p class="es">Un riesgo por equipo y el componente más probable: compresor, motor del evaporador o motor del condensador. Todavía se está comprobando con equipos reales. Mientras tanto, un piloto recibe las lecturas, el caso, y una respuesta directa cuando los datos no alcanzan.</p></div>
+        <p class="en">A risk score per unit and the component most likely involved: compressor, evaporator fan motor or condenser fan motor. Being calibrated on real equipment during our pilots.</p>
+        <p class="es">Un riesgo por equipo y el componente más probable: compresor, motor del evaporador o motor del condensador. Se está calibrando con equipos reales durante los pilotos.</p></div>
       <div class="cap"><h3 class="en">Assistant that cites sources</h3><h3 class="es">Asistente que cita sus fuentes</h3>
         <p class="en">Every alert comes with the matching case from manufacturer manuals and real service work, with the source shown. Ask-why chat screen<span class="soon">Coming</span></p>
         <p class="es">Cada alerta trae el caso que aplica, de manuales y servicio real, con la fuente a la vista. Pantalla para preguntar por qué<span class="soon">Pronto</span></p></div>
@@ -711,8 +727,8 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <h2 class="en">What an early warning looks like.</h2>
         <h2 class="es">Así se ve un aviso a tiempo.</h2>
       </div>
-      <p class="en">An illustration with sample data, not a live site. It shows how readings, history and a service case come together into one recommendation, and what happens when the data is not enough. On a pilot, the 21-day score is still being checked against real equipment. You get the readings, the case, and a straight answer when the data is thin. Until the phone view exists, the alert arrives by email, in English or Spanish.</p>
-      <p class="es">Una ilustración con datos de ejemplo, no un sitio en vivo. Muestra cómo las lecturas, el historial y un caso de servicio se juntan en una recomendación, y qué pasa cuando los datos no alcanzan. En un piloto, el riesgo a 21 días todavía se está comprobando con equipos reales. Usted recibe las lecturas, el caso, y una respuesta directa cuando los datos no alcanzan. Hasta que exista la vista para el celular, el aviso llega por email, en inglés o en español.</p>
+      <p class="en">An illustration with sample data. It shows how readings, history and a service case come together into one recommendation, and what happens when the data is not enough.</p>
+      <p class="es">Una ilustración con datos de ejemplo. Muestra cómo las lecturas, el historial y un caso de servicio se juntan en una recomendación, y qué pasa cuando los datos no alcanzan.</p>
     </div>
     <div class="demo-grid rv">
       <div class="panel">
@@ -817,6 +833,47 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
   </div>
 </section>
 
+<!-- HERRAMIENTAS: entrada a las páginas de producto -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="label"><span class="en">Tools</span><span class="es">Herramientas</span></span>
+        <h2 class="en">Other tools from TempLogic.</h2>
+        <h2 class="es">Otras herramientas de TempLogic.</h2>
+      </div>
+      <p class="en">Four programs we built for our own work. Each one has its own page with what it does and what it does not do yet. None is for sale yet.</p>
+      <p class="es">Cuatro programas que hicimos para nuestro propio trabajo. Cada uno tiene su página con lo que hace y lo que todavía no hace. Ninguno está a la venta todavía.</p>
+    </div>
+    <div class="tools-grid rv">
+      <a class="tool" href="/latenza/">
+        <span class="code"><span class="en">Monitoring</span><span class="es">Monitoreo</span></span>
+        <h3>Latenza</h3>
+        <p class="en">Watches your cron jobs, your website and your certificates, and tells your phone the moment something stops.</p><p class="es">Vigila sus tareas programadas, su página y sus certificados, y le avisa al celular en cuanto algo se detiene.</p>
+        <span class="go"><span class="en">See Latenza</span><span class="es">Ver Latenza</span> <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="tool" href="/brujula/">
+        <span class="code"><span class="en">Operating system</span><span class="es">Sistema operativo</span></span>
+        <h3>Brújula OS</h3>
+        <p class="en">A layer on top of Linux that watches the machine, follows rules you write in plain words, and always explains why.</p><p class="es">Una capa sobre Linux que vigila la máquina, sigue reglas escritas en palabras sencillas y siempre explica por qué.</p>
+        <span class="go"><span class="en">See Brújula OS</span><span class="es">Ver Brújula OS</span> <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="tool" href="/equipulse/">
+        <span class="code"><span class="en">Equipment history</span><span class="es">Historial de equipos</span></span>
+        <h3>Equipulse</h3>
+        <p class="en">A QR label on each HVAC/R machine opens its page with every earlier visit, diagnosis, repair and part.</p><p class="es">Una etiqueta QR en cada equipo de HVAC/R abre su página con cada visita, diagnóstico, reparación y pieza anterior.</p>
+        <span class="go"><span class="en">See Equipulse</span><span class="es">Ver Equipulse</span> <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="tool" href="/itertrace/">
+        <span class="code"><span class="en">Repeat visits</span><span class="es">Visitas repetidas</span></span>
+        <h3>Itertrace</h3>
+        <p class="en">Reads your service history from a CSV file and shows the visits that returned to the same equipment.</p><p class="es">Lee su historial de servicio de un archivo CSV y muestra las visitas que regresaron al mismo equipo.</p>
+        <span class="go"><span class="en">See Itertrace</span><span class="es">Ver Itertrace</span> <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- 10. TECHNICIAN + TECHNOLOGY -->
 <section class="statement">
   <div class="wrap">
@@ -905,18 +962,10 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       <span class="label"><span class="en">Early access</span><span class="es">Acceso anticipado</span></span>
       <h2 class="en">Be one of our first pilot sites.</h2>
       <h2 class="es">Sea uno de nuestros primeros sitios piloto.</h2>
-      <p class="en">We are working with a small group of contractors and facility managers to tune TempLogic on real equipment. Tell us what is on the site. We will get back to you.</p>
-      <p class="es">Estamos trabajando con un grupo pequeño de contratistas y encargados de mantenimiento para afinar TempLogic con equipos reales. Díganos qué hay en el sitio. Le contestamos.</p>
-      <ul class="pilot-terms en">
-        <li>A first pilot is two systems you already maintain, read-only, long enough to see drift. No purchase commitment.</li>
-        <li>Read-only: TempLogic only watches. It never changes setpoints or turns equipment on or off.</li>
-        <li>Your data is never sold or shared.</li>
-      </ul>
-      <ul class="pilot-terms es">
-        <li>Un primer piloto son dos equipos que ya mantiene, solo lectura, el tiempo suficiente para ver un desvío. Sin compromiso de compra.</li>
-        <li>Solo lectura: TempLogic solo mira. Nunca cambia setpoints ni prende o apaga equipos.</li>
-        <li>Sus datos nunca se venden ni se comparten.</li>
-      </ul>
+      <p class="en">We are working with a small group of contractors and facility managers to tune TempLogic on real equipment. Tell us what you service and we will get back to you.</p>
+      <ul class="pilot-terms en"><li>Contact us to discuss pilot scope, duration, and pricing for your facility.</li><li>Read-only: TempLogic only watches. It never changes setpoints or turns equipment on or off.</li><li>Your data is never sold or shared.</li></ul>
+      <p class="es">Estamos trabajando con un grupo pequeño de contratistas y encargados de mantenimiento para afinar TempLogic con equipos reales. Díganos qué sistemas trabaja y le contestamos.</p>
+      <ul class="pilot-terms es"><li>Contáctenos para definir el alcance, la duración y el precio de un piloto para su instalación.</li><li>Solo lectura: TempLogic solo mira. Nunca cambia setpoints ni prende o apaga equipos.</li><li>Sus datos nunca se venden ni se comparten.</li></ul>
       <p style="margin:var(--s5) 0 0"><a href="pilot-program.html"><span class="en">How the pilot program works →</span><span class="es">Cómo funciona el programa piloto →</span></a></p>
       <div class="mail-line"><span aria-hidden="true" class="muted">→</span><a class="js-email" href="mailto:gnarofdez@templogicsystems.com">gnarofdez@templogicsystems.com</a></div>
     </div>
@@ -931,67 +980,17 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <div><label for="f-phone"><span class="en">Phone</span><span class="es">Teléfono</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
       </div>
       <fieldset>
-        <legend class="flabel"><span class="en">I am</span><span class="es">Soy</span></legend>
-        <div class="checks">
-          <label><input type="radio" name="role" value="Contractor"><span class="en">A contractor</span><span class="es">Contratista</span></label>
-          <label><input type="radio" name="role" value="Site owner or facility manager"><span class="en">The owner or facility manager</span><span class="es">Dueño o encargado del sitio</span></label>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend class="flabel"><span class="en">What do you have on site?</span><span class="es">¿Qué tiene en el sitio?</span></legend>
+        <legend class="flabel"><span class="en">What do you service?</span><span class="es">¿Qué sistemas trabaja?</span></legend>
         <div class="checks">
           <label><input type="checkbox" name="sec" value="Commercial & Industrial Refrigeration"><span class="en">Commercial &amp; Industrial Refrigeration</span><span class="es">Refrigeración Comercial e Industrial</span></label>
           <label><input type="checkbox" name="sec" value="Chillers & Boilers"><span class="en">Chillers &amp; Boilers</span><span class="es">Chillers y Boilers</span></label>
           <label><input type="checkbox" name="sec" value="Commercial Air Conditioning"><span class="en">Commercial Air Conditioning</span><span class="es">Aire Acondicionado Comercial</span></label>
         </div>
       </fieldset>
-      <div class="row2">
-        <div>
-          <label for="f-controller"><span class="en">What already records the readings?</span><span class="es">¿Qué ya registra las lecturas?</span></label>
-          <select id="f-controller" name="controller">
-            <option value="">—</option>
-            <option value="Logs or a spreadsheet" data-en="Logs or a spreadsheet" data-es="Bitácoras o una hoja de cálculo">Logs or a spreadsheet</option>
-            <option value="CPC, Emerson E2 or E3" data-en="CPC, Emerson E2 or E3" data-es="CPC, Emerson E2 o E3">CPC, Emerson E2 or E3</option>
-            <option value="Danfoss" data-en="Danfoss" data-es="Danfoss">Danfoss</option>
-            <option value="Micro Thermo" data-en="Micro Thermo" data-es="Micro Thermo">Micro Thermo</option>
-            <option value="BACnet or Modbus export" data-en="BACnet or Modbus export" data-es="Export de BACnet o Modbus">BACnet or Modbus export</option>
-            <option value="Not sure" data-en="Not sure" data-es="No estoy seguro">Not sure</option>
-          </select>
-        </div>
-        <div>
-          <label for="f-systems"><span class="en">How many systems?</span><span class="es">¿Cuántos equipos?</span></label>
-          <select id="f-systems" name="systems">
-            <option value="">—</option>
-            <option value="1-2" data-en="1–2" data-es="1–2">1–2</option>
-            <option value="3-10" data-en="3–10" data-es="3–10">3–10</option>
-            <option value="More than 10" data-en="More than 10" data-es="Más de 10">More than 10</option>
-          </select>
-        </div>
-      </div>
-      <fieldset>
-        <legend class="flabel"><span class="en">Who should get the alert?</span><span class="es">¿Quién debe recibir el aviso?</span></legend>
-        <div class="checks">
-          <label><input type="radio" name="alert" value="Me"><span class="en">Me</span><span class="es">Yo</span></label>
-          <label><input type="radio" name="alert" value="My contractor"><span class="en">My contractor</span><span class="es">Mi contratista</span></label>
-          <label><input type="radio" name="alert" value="Both"><span class="en">Both</span><span class="es">Los dos</span></label>
-        </div>
-      </fieldset>
       <div><label for="f-msg"><span class="en">Anything else?</span><span class="es">¿Algo más?</span></label><textarea id="f-msg" name="message"></textarea></div>
-      <ul class="pilot-terms en">
-        <li>Today: a controller export, or the logs you already keep. No new gateway.</li>
-        <li>Back to you: an email, in English or Spanish, with the readings and the matching case — or a straight "not enough data."</li>
-        <li>Never: a setpoint change, a start, or a stop.</li>
-      </ul>
-      <ul class="pilot-terms es">
-        <li>Hoy: un export del controlador, o las bitácoras que ya guarda. Sin gateway nuevo.</li>
-        <li>De vuelta: un correo, en inglés o en español, con las lecturas y el caso que coincide — o un "no hay datos suficientes."</li>
-        <li>Nunca: un cambio de setpoint, un arranque o un paro.</li>
-      </ul>
-      <p class="note en">This button opens your email app with the message ready. If no app opens, write to gnarofdez@templogicsystems.com.</p>
-      <p class="note es">Este botón abre su aplicación de correo con el mensaje listo. Si no se abre ninguna, escriba a gnarofdez@templogicsystems.com.</p>
       <button class="btn btn-primary" type="submit"><span class="en">Request Early Access</span><span class="es">Pedir acceso anticipado</span></button>
-      <p class="fine en">A wrong flag is a note back to us, not a command. The technician makes the call.</p>
-      <p class="fine es">Un aviso equivocado es una nota de regreso, no una orden. La decisión la toma el técnico.</p>
+      <p class="fine en">Opens your email app with the message ready to send.</p>
+      <p class="fine es">Abre su aplicación de correo con el mensaje listo para enviar.</p>
     </form>
   </div>
 </section>
@@ -1016,6 +1015,7 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
         <a href="#method"><span class="en">How TempLogic thinks</span><span class="es">Cómo piensa TempLogic</span></a>
         <a href="#about"><span class="en">About</span><span class="es">Nosotros</span></a>
         <a href="#guides"><span class="en">Field Guides</span><span class="es">Guías de campo</span></a>
+        <a href="#tools"><span class="en">Tools</span><span class="es">Herramientas</span></a>
         <a href="pilot-program.html"><span class="en">Pilot Program</span><span class="es">Programa piloto</span></a>
       </nav>
       <div>
@@ -1040,7 +1040,7 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
     root.setAttribute("data-lang", l); root.lang = l;
     document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.setLang === l); });
     try { localStorage.setItem("tl-lang", l); } catch(e){}
-    document.querySelectorAll("text[data-en], option[data-en]").forEach(function(t){ t.textContent = t.getAttribute("data-" + l); });
+    document.querySelectorAll("text[data-en]").forEach(function(t){ t.textContent = t.getAttribute("data-" + l); });
   }
   var saved = null; try { saved = localStorage.getItem("tl-lang"); } catch(e){}
   setLang(saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en"));
@@ -1057,28 +1057,10 @@ footer{background:var(--deep);border-top:1px solid var(--line);padding:var(--s7)
       alert(es ? "Por favor escriba su nombre y un email válido." : "Please enter your name and a valid email.");
       return;
     }
-    function picked(name){
-      var nodes = f.querySelectorAll('[name="' + name + '"]');
-      var out = [];
-      for (var i = 0; i < nodes.length; i++) if (nodes[i].checked) out.push(nodes[i].value);
-      return out.join(", ") || "-";
-    }
-    function one(name){
-      var el = f.elements[name];
-      return (el && el.value) ? el.value : "-";
-    }
+    var secs = Array.prototype.map.call(f.querySelectorAll('input[name="sec"]:checked'), function(c){ return c.value; }).join(", ") || "-";
     var body = [
-      "Name: " + f.name.value,
-      "Company: " + f.company.value,
-      "Email: " + f.email.value,
-      "Phone: " + f.phone.value,
-      "Role: " + picked("role"),
-      "Divisions: " + picked("sec"),
-      "Already recording: " + one("controller"),
-      "How many systems: " + one("systems"),
-      "Alert goes to: " + picked("alert"),
-      "",
-      f.message.value
+      "Name: " + f.name.value, "Company: " + f.company.value, "Email: " + f.email.value,
+      "Phone: " + f.phone.value, "Divisions: " + secs, "", f.message.value
     ].join("\n");
     location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("TempLogic early access: " + (f.company.value || f.name.value)) + "&body=" + encodeURIComponent(body);
   });
