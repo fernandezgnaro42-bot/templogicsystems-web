@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latenza | The rhythm of what matters</title>
+<meta name="description" content="Latenza watches your cron jobs, your website and your certificates, and tells your phone the moment something stops. One small program on your own server. English and Spanish.">
+<meta name="theme-color" content="#08141F">
+<link rel="canonical" href="https://templogicsystems.com/latenza/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Latenza | The rhythm of what matters">
+<meta property="og:description" content="Latenza watches your cron jobs, your website and your certificates, and tells your phone the moment something stops.">
+<meta property="og:url" content="https://templogicsystems.com/latenza/">
+<meta property="og:image" content="https://templogicsystems.com/latenza/status-en.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%2308141F'/%3E%3Cpath d='M3 21h8l4-11 7 21 5-14 3 4h7' fill='none' stroke='%2336C5F0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Same design tokens as templogicsystems.com */
+:root{
+  --bg:#08141F; --surface:#101F2C; --deep:#050C12;
+  --blue:#198CFF; --cyan:#36C5F0; --ok:#35C48D; --watch:#E8A33D; --alert:#F0605D;
+  --text:#F4F7FA; --text-2:#AAB7C4; --text-3:#7E8D9C;
+  --line:rgba(170,183,196,.16); --line-2:rgba(170,183,196,.28);
+  --f-head:"Space Grotesk",Inter,system-ui,sans-serif;
+  --f-body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:8px; --r-lg:12px; --max:1120px; --nav-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;background:var(--bg);color:var(--text-2);font:400 1rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-head);color:var(--text);line-height:1.14;margin:0 0 .5em;font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(2.1rem,5vw,3.5rem);letter-spacing:-.025em}
+h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+h3{font-size:1.1rem}
+p{margin:0 0 1em}
+a{color:var(--cyan)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+section.tight{padding:56px 0}
+.alt{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.label{display:inline-flex;align-items:center;gap:8px;font:500 .75rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.label::before{content:"";width:18px;height:1px;background:var(--cyan)}
+.lead{font-size:1.15rem;max-width:60ch}
+.muted{color:var(--text-3)}
+.small{font-size:.86rem}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
+html[data-lang="en"] .es, html[data-lang="es"] .en{display:none !important}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--r);font:600 .95rem/1 var(--f-body);text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--blue);color:#050C12}
+.btn-primary:hover{background:#3a9dff}
+.btn-line{border-color:var(--line-2);color:var(--text)}
+.btn-line:hover{border-color:var(--text-2)}
+.btn-sm{min-height:38px;padding:0 16px;font-size:.88rem}
+
+header{position:sticky;top:0;z-index:50;background:rgba(8,20,31,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:600 1.15rem/1 var(--f-head)}
+.brand svg{flex:none}
+.brand small{display:block;font:500 .6rem/1 var(--f-mono);letter-spacing:.14em;color:var(--text-3);margin-top:4px;text-transform:uppercase}
+.links{display:flex;align-items:center;gap:22px}
+.links a.t{color:var(--text-2);text-decoration:none;font-size:.92rem}
+.links a.t:hover{color:var(--text)}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--text-3);font:500 .75rem/1 var(--f-mono);padding:8px 10px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--text)}
+@media (max-width:820px){.links a.t{display:none}}
+
+.hero{padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:26px;font:500 .78rem/1.4 var(--f-mono);color:var(--text-3)}
+.facts > span::before{content:"✓ ";color:var(--ok)}
+.shot{border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;background:#0f0f10;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.shot img{width:100%}
+figure{margin:0}
+figcaption{font-size:.84rem;color:var(--text-3);margin-top:10px}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:48px 0}}
+
+.push{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 16px;max-width:430px}
+.push .ico{width:34px;height:34px;border-radius:8px;background:#0f0f10;display:grid;place-items:center;flex:none;font-size:1.05rem}
+.push b{display:block;color:var(--text);font-size:.95rem}
+.push span{font-size:.88rem}
+.push time{margin-left:auto;font:500 .7rem/1.6 var(--f-mono);color:var(--text-3);flex:none}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.card h3{margin-bottom:8px}
+.card p{margin:0;font-size:.95rem}
+.card .k{font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:12px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split > *, .hero-grid > *{min-width:0}   /* a long code line must scroll inside its box, not widen the page */
+.split.rev > :first-child{order:2}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.split.rev > :first-child{order:0}}
+ul.ticks{list-style:none;padding:0;margin:18px 0 0}
+ul.ticks li{padding-left:26px;position:relative;margin-bottom:10px}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:6px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+
+pre{background:var(--deep);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 14px;font:400 .84rem/1.6 var(--f-mono);color:var(--text)}
+pre .c{color:var(--text-3)}
+pre .h{color:var(--cyan)}
+code{font-family:var(--f-mono);font-size:.88em;color:var(--text)}
+.tag{font:500 .68rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);display:block;margin:0 0 8px}
+
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid #2e2e32;background:#18181a;color:#ececec;font:500 13px/1.3 system-ui,sans-serif}
+.pill i{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.pill.down i{background:#f87171}
+.pills{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 20px}
+
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:32px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.step::before{counter-increment:s;content:counter(s);width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font:500 .95rem/1 var(--f-mono);color:var(--cyan)}
+.step h3{margin:8px 0 6px}
+.step pre{margin-top:10px}
+.step > div{min-width:0}
+
+.table{overflow-x:auto;margin-top:28px;border:1px solid var(--line);border-radius:var(--r-lg)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .72rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500}
+tr.me td{background:rgba(25,140,255,.07)}
+
+.limits{border-left:3px solid var(--watch);background:var(--surface);border-radius:var(--r);padding:20px 22px;margin-top:28px}
+.limits ul{margin:8px 0 0;padding-left:20px}
+.limits li{margin-bottom:6px}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details summary{cursor:pointer;color:var(--text);font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-family:var(--f-mono);color:var(--cyan)}
+details[open] summary::after{content:"−"}
+details p{margin:12px 0 0;max-width:70ch}
+
+.final{text-align:center}
+.final .lead{margin:0 auto 26px}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:.85rem;color:var(--text-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--text-2)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Latenza">
+      <svg viewBox="0 0 40 28" width="40" height="28" aria-hidden="true"><path d="M1 15h9l4-11 7 21 5-14 3 4h10" fill="none" stroke="#36C5F0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Latenza<small><span class="en">by TempLogic Systems</span><span class="es">de TempLogic Systems</span></small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a class="t" href="#what"><span class="en">What it does</span><span class="es">Qué hace</span></a>
+      <a class="t" href="#pulso">pulso</a>
+      <a class="t" href="#start"><span class="en">Set up</span><span class="es">Instalación</span></a>
+      <a class="t" href="#compare"><span class="en">Compare</span><span class="es">Comparar</span></a>
+      <a class="t" href="#faq"><span class="en">Questions</span><span class="es">Preguntas</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label"><span class="en">The rhythm of what matters</span><span class="es">El ritmo de lo que importa</span></span>
+      <h1><span class="en">Find out the backup failed before you need it.</span><span class="es">Entérese de que el respaldo falló antes de necesitarlo.</span></h1>
+      <p class="lead"><span class="en">Latenza watches your cron jobs, your website and your certificates, and tells your phone the moment something stops. One small program on your own server.</span><span class="es">Latenza vigila sus tareas programadas, su página y sus certificados, y le avisa al celular en cuanto algo se detiene. Un programa pequeño en su propio servidor.</span></p>
+      <div class="cta">
+        <a class="btn btn-primary js-mail" href="#contact"><span class="en">Tell me when it is ready</span><span class="es">Avíseme cuando esté listo</span></a>
+        <a class="btn btn-line" href="#what"><span class="en">See what it does</span><span class="es">Ver qué hace</span></a>
+      </div>
+      <div class="facts">
+        <span><span class="en">English and Spanish</span><span class="es">Inglés y español</span></span>
+        <span><span class="en">Your data stays on your server</span><span class="es">Sus datos se quedan en su servidor</span></span>
+        <span><span class="en">106 automated tests</span><span class="es">106 pruebas automáticas</span></span>
+      </div>
+    </div>
+    <figure>
+      <div class="shot">
+        <img class="en" src="status-en.png" width="1520" height="1172" alt="Latenza public status page: three services with 30 days of history, all operational">
+        <img class="es" src="status-es.png" width="1520" height="1172" alt="Página de estado pública de Latenza: tres servicios con 30 días de historial, todo funcionando">
+      </div>
+      <figcaption><span class="en">The public status page, with sample data.</span><span class="es">La página de estado pública, con datos de muestra.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="alt tight">
+  <div class="wrap split">
+    <div>
+      <span class="label"><span class="en">The problem</span><span class="es">El problema</span></span>
+      <h2><span class="en">Scheduled jobs fail without a sound.</span><span class="es">Las tareas programadas fallan sin hacer ruido.</span></h2>
+      <p><span class="en">A backup that stopped running three weeks ago looks exactly like one that runs every night, until the day you need it. Nothing crashes and nobody gets an email.</span><span class="es">Un respaldo que dejó de correr hace tres semanas se ve igual que uno que corre todas las noches, hasta el día que lo necesita. Nada truena y nadie recibe un correo.</span></p>
+      <p><span class="en">Latenza turns that silence into an alert: each job reports in when it finishes, and a job that does not report on time is a problem you hear about.</span><span class="es">Latenza convierte ese silencio en una alerta: cada tarea avisa cuando termina, y la que no avisa a su hora es un problema del que usted se entera.</span></p>
+    </div>
+    <div>
+      <span class="tag"><span class="en">What reaches your phone</span><span class="es">Lo que llega a su celular</span></span>
+      <div class="push">
+        <div class="ico" aria-hidden="true">🔴</div>
+        <div>
+          <b><span class="en">DOWN: Nightly database backup</span><span class="es">CAÍDO: Respaldo nocturno de la base</span></b>
+          <span><span class="en">no ping for 1d 4h (expected every 1d)</span><span class="es">sin ping desde hace 1d 4h (se espera cada 1d)</span></span>
+        </div>
+        <time>06:30</time>
+      </div>
+      <p class="small muted" style="margin-top:12px"><span class="en">Sent with ntfy (free phone app), Discord, Slack or email. Only when something changes, with optional reminders while it stays down.</span><span class="es">Se manda por ntfy (app gratis), Discord, Slack o correo. Solo cuando algo cambia, con recordatorios opcionales mientras siga caído.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap">
+    <span class="label"><span class="en">What it does</span><span class="es">Qué hace</span></span>
+    <h2><span class="en">Three kinds of watching, one program.</span><span class="es">Tres formas de vigilar, un solo programa.</span></h2>
+    <div class="grid3">
+      <div class="card"><span class="k"><span class="en">Heartbeats</span><span class="es">Latidos</span></span><h3><span class="en">Cron jobs that report in</span><span class="es">Tareas que avisan</span></h3><p><span class="en">Each job calls a URL when it finishes. No call on time, or a call to <code>/fail</code>, and you get an alert. You also see how long the job took.</span><span class="es">Cada tarea llama a una dirección cuando termina. Si no llama a tiempo, o llama a <code>/fail</code>, le llega la alerta. También ve cuánto tardó.</span></p></div>
+      <div class="card"><span class="k"><span class="en">Uptime</span><span class="es">Disponibilidad</span></span><h3><span class="en">Sites and APIs that answer</span><span class="es">Páginas y APIs que contestan</span></h3><p><span class="en">Latenza calls your address as often as you say and checks the status code, an optional text and the response time. One blip does not wake you: it alerts after the failures in a row you choose.</span><span class="es">Latenza llama a su dirección cada tanto y revisa el código de respuesta, un texto opcional y el tiempo. Un tropiezo no lo despierta: avisa después de las fallas seguidas que usted escoja.</span></p></div>
+      <div class="card"><span class="k"><span class="en">Certificates</span><span class="es">Certificados</span></span><h3><span class="en">HTTPS that is about to expire</span><span class="es">HTTPS a punto de vencer</span></h3><p><span class="en">One warning, days before the certificate of a site you watch runs out.</span><span class="es">Un aviso, días antes de que venza el certificado de una página que vigila.</span></p></div>
+      <div class="card"><span class="k"><span class="en">Status page</span><span class="es">Página de estado</span></span><h3><span class="en">A public page for your customers</span><span class="es">Una página pública para sus clientes</span></h3><p><span class="en">Thirty days of history and uptime for the services you choose to show. Names and status only, never addresses or error details.</span><span class="es">Treinta días de historial y disponibilidad de los servicios que usted decida mostrar. Solo nombres y estado, nunca direcciones ni detalles de errores.</span></p></div>
+      <div class="card"><span class="k"><span class="en">Dashboard</span><span class="es">Panel</span></span><h3><span class="en">Add monitors without a restart</span><span class="es">Agregue monitores sin reiniciar</span></h3><p><span class="en">A private page, behind a password, where you add, edit and delete monitors. Or keep them in one config file if you prefer version control.</span><span class="es">Una página privada, con contraseña, donde agrega, edita y borra monitores. O déjelos en un archivo de configuración si prefiere control de versiones.</span></p></div>
+      <div class="card"><span class="k"><span class="en">No false alarms on wake-up</span><span class="es">Sin falsas alarmas al despertar</span></span><h3><span class="en">It knows when it was away</span><span class="es">Sabe cuándo estuvo ausente</span></h3><p><span class="en">If Latenza was stopped or its machine slept, a job that looks late gets its grace time before any alarm.</span><span class="es">Si Latenza estuvo apagado o su máquina dormida, una tarea que parece atrasada recibe su tiempo de gracia antes de cualquier alarma.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap split rev">
+    <figure>
+      <div class="shot">
+        <img class="en" src="dashboard-en.png" width="1720" height="1872" loading="lazy" alt="Latenza dashboard with five monitors: last check, response time, uptime, ping URL and the last problem of a missed backup">
+        <img class="es" src="dashboard-es.png" width="1720" height="1872" loading="lazy" alt="Panel de Latenza con cinco monitores: última revisión, tiempo de respuesta, disponibilidad, URL de ping y el último problema de un respaldo perdido">
+      </div>
+      <figcaption><span class="en">The private dashboard, with sample data.</span><span class="es">El panel privado, con datos de muestra.</span></figcaption>
+    </figure>
+    <div>
+      <span class="label"><span class="en">The dashboard</span><span class="es">El panel</span></span>
+      <h2><span class="en">Everything you watch, on one page.</span><span class="es">Todo lo que vigila, en una página.</span></h2>
+      <ul class="ticks">
+        <li><span class="en">When each one was last seen, how fast it answered and its uptime over 24 hours and 30 days.</span><span class="es">Cuándo se vio cada uno por última vez, qué tan rápido contestó y su disponibilidad en 24 horas y 30 días.</span></li>
+        <li><span class="en">The last problem in plain words: "no ping for 1d 4h" or "the job reported a failure (exit code 3)".</span><span class="es">El último problema en palabras claras: "sin ping desde hace 1d 4h" o "la tarea avisó que falló (código de salida 3)".</span></li>
+        <li><span class="en">The ping address of each job, ready to copy.</span><span class="es">La dirección de ping de cada tarea, lista para copiar.</span></li>
+        <li><span class="en">Works on a phone. Light or dark, following your system.</span><span class="es">Funciona en el celular. Claro u oscuro, según su sistema.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pulso">
+  <div class="wrap split">
+    <div>
+      <span class="label">pulso</span>
+      <h2><span class="en">One word in front of your job.</span><span class="es">Una palabra delante de su tarea.</span></h2>
+      <p><span class="en"><code>pulso</code> is a 22 KB program written in C that comes with Latenza. Put it in front of any command and it reports the start, the finish and, if it fails, the exit code.</span><span class="es"><code>pulso</code> es un programa de 22 KB escrito en C que viene con Latenza. Póngalo delante de cualquier comando y avisa el inicio, el final y, si falla, el código de salida.</span></p>
+      <ul class="ticks">
+        <li><span class="en">Your job keeps its own exit code, input and output.</span><span class="es">Su tarea conserva su código de salida, su entrada y su salida.</span></li>
+        <li><span class="en">If Latenza is slow or unreachable, the job runs anyway.</span><span class="es">Si Latenza está lento o no contesta, la tarea corre igual.</span></li>
+        <li><span class="en">Works from cron and from systemd services.</span><span class="es">Funciona desde cron y desde servicios de systemd.</span></li>
+      </ul>
+    </div>
+    <div>
+      <span class="tag"><span class="en">Before</span><span class="es">Antes</span></span>
+      <pre><span class="c"># crontab</span>
+0 2 * * * U=https://status.example.com/ping/TOKEN; curl -fsS -m 10 $U/start >/dev/null; if /opt/backup.sh; then curl -fsS -m 10 --retry 3 $U >/dev/null; else curl -fsS -m 10 --retry 3 $U/fail >/dev/null; fi</pre>
+      <span class="tag"><span class="en">With pulso</span><span class="es">Con pulso</span></span>
+      <pre><span class="c"># crontab</span>
+0 2 * * * <span class="h">pulso</span> https://status.example.com/ping/TOKEN -- /opt/backup.sh</pre>
+    </div>
+  </div>
+</section>
+
+<section class="alt tight">
+  <div class="wrap split">
+    <div>
+      <span class="label"><span class="en">For your website</span><span class="es">Para su página</span></span>
+      <h2><span class="en">A status line on your own site.</span><span class="es">Un renglón de estado en su propia página.</span></h2>
+      <p><span class="en">One line of HTML shows how your services are doing and links to the status page. If the status server cannot be reached, the line hides itself instead of guessing.</span><span class="es">Una línea de HTML muestra cómo van sus servicios y enlaza a la página de estado. Si el servidor de estado no contesta, el renglón se esconde en vez de adivinar.</span></p>
+    </div>
+    <div>
+      <span class="tag"><span class="en">How it looks</span><span class="es">Cómo se ve</span></span>
+      <div class="pills">
+        <span class="pill"><i></i><span class="en">All systems operational</span><span class="es">Todo funcionando</span></span>
+        <span class="pill down"><i></i><span class="en">Checkout is down</span><span class="es">Checkout está caído</span></span>
+      </div>
+      <pre>&lt;script src="https://status.example.com/widget.js" async&gt;&lt;/script&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <span class="label"><span class="en">Set up</span><span class="es">Instalación</span></span>
+    <h2><span class="en">Running in about five minutes.</span><span class="es">Corriendo en unos cinco minutos.</span></h2>
+    <p class="lead"><span class="en">You need a Linux machine that stays on, with Python 3.11 or newer. Ideally not the same machine you are watching: if both go down together, nobody tells you.</span><span class="es">Ocupa una máquina con Linux que se quede prendida, con Python 3.11 o más nuevo. De preferencia no la misma que vigila: si las dos se caen juntas, nadie le avisa.</span></p>
+    <div class="steps">
+      <div class="step"><div><h3><span class="en">Install it</span><span class="es">Instálelo</span></h3><pre>python3 -m venv .venv &amp;&amp; .venv/bin/pip install -r requirements.txt
+cp latenza.example.toml latenza.toml</pre></div></div>
+      <div class="step"><div><h3><span class="en">Say where alerts go</span><span class="es">Diga a dónde van las alertas</span></h3><p><span class="en">Put your ntfy topic, webhook or email in <code>latenza.toml</code>, then send yourself a test.</span><span class="es">Ponga su tema de ntfy, su webhook o su correo en <code>latenza.toml</code> y mándese una prueba.</span></p><pre>.venv/bin/python -m latenza test-alert   <span class="c"># <span class="en">your phone should buzz</span><span class="es">su celular debe sonar</span></span></pre></div></div>
+      <div class="step"><div><h3><span class="en">Start it</span><span class="es">Arránquelo</span></h3><pre>LATENZA_PASSWORD='a-long-password' .venv/bin/python -m latenza run</pre><p class="small muted"><span class="en">A systemd unit and a Caddy example for HTTPS are included.</span><span class="es">Incluye un servicio de systemd y un ejemplo de Caddy para HTTPS.</span></p></div></div>
+      <div class="step"><div><h3><span class="en">Add what you want watched</span><span class="es">Agregue lo que quiere vigilar</span></h3><p><span class="en">Open the dashboard, press "Add monitor", and put <code>pulso</code> in front of your cron jobs.</span><span class="es">Abra el panel, oprima "Agregar monitor" y ponga <code>pulso</code> delante de sus tareas de cron.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="compare" class="alt">
+  <div class="wrap">
+    <span class="label"><span class="en">Compare</span><span class="es">Comparar</span></span>
+    <h2><span class="en">Hosted services are good. This is for when you want your own.</span><span class="es">Los servicios en la nube son buenos. Esto es para cuando quiere el suyo.</span></h2>
+    <p class="lead"><span class="en">If a hosted service fits you, use one: Healthchecks.io has a free plan and is open source. Latenza is for people who want everything in one small program, on a machine they control, in English or Spanish.</span><span class="es">Si un servicio en la nube le acomoda, úselo: Healthchecks.io tiene plan gratis y es de código abierto. Latenza es para quien quiere todo en un programa pequeño, en una máquina que controla, en inglés o en español.</span></p>
+    <div class="table">
+      <table>
+        <thead><tr><th></th><th><span class="en">Free plan</span><span class="es">Plan gratis</span></th><th><span class="en">Paid</span><span class="es">De paga</span></th><th><span class="en">Where it runs</span><span class="es">Dónde corre</span></th></tr></thead>
+        <tbody>
+          <tr><td>Healthchecks.io</td><td><span class="en">20 jobs</span><span class="es">20 tareas</span></td><td><span class="en">$5, $20 and $80 a month</span><span class="es">$5, $20 y $80 al mes</span></td><td><span class="en">Their servers, or yours (open source)</span><span class="es">Los servidores de ellos, o el suyo (código abierto)</span></td></tr>
+          <tr><td>Cronitor</td><td><span class="en">5 monitors</span><span class="es">5 monitores</span></td><td><span class="en">$2 per monitor + $5 per user a month</span><span class="es">$2 por monitor + $5 por usuario al mes</span></td><td><span class="en">Their servers</span><span class="es">Los servidores de ellos</span></td></tr>
+          <tr><td>Better Stack</td><td><span class="en">10 monitors</span><span class="es">10 monitores</span></td><td><span class="en">From $34 a month per person</span><span class="es">Desde $34 al mes por persona</span></td><td><span class="en">Their servers</span><span class="es">Los servidores de ellos</span></td></tr>
+          <tr class="me"><td>Latenza</td><td>—</td><td><span class="en">Not for sale yet</span><span class="es">Todavía no está a la venta</span></td><td><span class="en">Your server only</span><span class="es">Solo el servidor de usted</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small muted" style="margin-top:12px"><span class="en">Prices read from each company's public pricing page on October 12, 2026. Check their sites for current numbers.</span><span class="es">Precios leídos de la página pública de cada compañía el 12 de octubre de 2026. Revise sus sitios para ver los actuales.</span></p>
+    <div class="limits">
+      <h3><span class="en">What Latenza does not do</span><span class="es">Lo que Latenza no hace</span></h3>
+      <ul>
+        <li><span class="en">It is for one owner per installation: no accounts or teams.</span><span class="es">Es para un solo dueño por instalación: no tiene cuentas ni equipos.</span></li>
+        <li><span class="en">Built for dozens of monitors, not thousands. It has not been load-tested.</span><span class="es">Hecho para decenas de monitores, no miles. No se ha probado con carga.</span></li>
+        <li><span class="en">It has not had an independent security audit. Always serve the dashboard over HTTPS.</span><span class="es">No ha tenido una auditoría de seguridad independiente. Sirva siempre el panel por HTTPS.</span></li>
+        <li><span class="en">It checks from one place: the machine it runs on.</span><span class="es">Revisa desde un solo lugar: la máquina donde corre.</span></li>
+        <li><span class="en">When the dashboard refuses a monitor, the reason is shown in English.</span><span class="es">Cuando el panel rechaza un monitor, la razón sale en inglés.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="label"><span class="en">Questions</span><span class="es">Preguntas</span></span>
+    <h2><span class="en">Before you ask.</span><span class="es">Antes de que pregunte.</span></h2>
+    <details><summary><span class="en">Where does my data live?</span><span class="es">¿Dónde quedan mis datos?</span></summary><p><span class="en">In one SQLite file next to the program, on your server. Latenza sends nothing anywhere except the alerts you configure.</span><span class="es">En un archivo de SQLite junto al programa, en su servidor. Latenza no manda nada a ningún lado, salvo las alertas que usted configure.</span></p></details>
+    <details><summary><span class="en">Can I buy it today?</span><span class="es">¿Puedo comprarlo hoy?</span></summary><p><span class="en">Not yet. It runs and is tested, and the price has not been set. Write to us and you will hear first.</span><span class="es">Todavía no. Funciona y está probado, y el precio no se ha decidido. Escríbanos y será de los primeros en saber.</span></p></details>
+    <details><summary><span class="en">What do I need to run it?</span><span class="es">¿Qué ocupo para correrlo?</span></summary><p><span class="en">A Linux machine that stays on, Python 3.11 or newer, and a web address if you want the status page public. To build <code>pulso</code> you need a C compiler and libcurl; libcurl is already on most servers, the compiler may need installing.</span><span class="es">Una máquina con Linux que se quede prendida, Python 3.11 o más nuevo y una dirección web si quiere que la página de estado sea pública. Para compilar <code>pulso</code> ocupa un compilador de C y libcurl; libcurl ya viene en casi todos los servidores, el compilador tal vez haya que instalarlo.</span></p></details>
+    <details><summary><span class="en">How is it tested?</span><span class="es">¿Cómo está probado?</span></summary><p><span class="en">106 automated tests against real local servers: a site that goes down and comes back, a real certificate about to expire, the real program started and stopped, <code>pulso</code> compiled with warnings as errors, and the dashboard driven in a real Chrome browser. Tests reduce bugs; they do not promise there are none.</span><span class="es">106 pruebas automáticas contra servidores locales reales: una página que se cae y regresa, un certificado real a punto de vencer, el programa real arrancado y detenido, <code>pulso</code> compilado con las advertencias como errores y el panel manejado en un navegador Chrome real. Las pruebas reducen los errores; no prometen que no haya ninguno.</span></p></details>
+    <details><summary><span class="en">Who makes it?</span><span class="es">¿Quién lo hace?</span></summary><p><span class="en">TempLogic Systems, a small company in California that builds monitoring for commercial HVAC and refrigeration. Latenza is also the tool that watches our own server and backups.</span><span class="es">TempLogic Systems, una compañía pequeña de California que hace monitoreo para HVAC y refrigeración comercial. Latenza es también la herramienta que vigila nuestro propio servidor y nuestros respaldos.</span></p></details>
+  </div>
+</section>
+
+<section id="contact" class="alt final">
+  <div class="wrap">
+    <span class="label"><span class="en">Technology with purpose. Connections with meaning.</span><span class="es">Tecnología con propósito. Conexiones con sentido.</span></span>
+    <h2><span class="en">Want to know when it is ready?</span><span class="es">¿Quiere saber cuando esté listo?</span></h2>
+    <p class="lead"><span class="en">Send one email. You get one reply when Latenza is for sale, and nothing else.</span><span class="es">Mande un correo. Recibe una respuesta cuando Latenza esté a la venta, y nada más.</span></p>
+    <a class="btn btn-primary js-mail" href="#contact"><span class="en">Email us</span><span class="es">Escríbanos</span></a>
+    <p class="small muted" style="margin-top:14px"><span class="js-addr"></span></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> TempLogic Systems · Latenza: <span class="en">the rhythm of what matters</span><span class="es">el ritmo de lo que importa</span></span>
+    <span><a href="https://templogicsystems.com/">templogicsystems.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EMAIL = "gnarofdez@templogicsystems.com";
+  var root = document.documentElement;
+  function mailto(){
+    var es = root.getAttribute("data-lang") === "es";
+    return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(es ? "Latenza: avíseme cuando esté listo" : "Latenza: tell me when it is ready");
+  }
+  function setLang(l){
+    root.setAttribute("data-lang", l); root.lang = l;
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.setLang === l); });
+    document.querySelectorAll(".js-mail").forEach(function(a){ a.href = mailto(); });
+    document.title = l === "es" ? "Latenza | El ritmo de lo que importa" : "Latenza | The rhythm of what matters";
+    try { localStorage.setItem("tl-lang", l); } catch(e){}
+  }
+  var saved = null; try { saved = localStorage.getItem("tl-lang"); } catch(e){}
+  setLang(saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en"));
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.dataset.setLang); }); });
+  document.querySelectorAll(".js-addr").forEach(function(s){ s.textContent = EMAIL; });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
