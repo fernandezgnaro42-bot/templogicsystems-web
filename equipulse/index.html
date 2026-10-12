@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equipulse | Know the equipment. Know its history.</title>
+<meta name="description" content="A QR label on each HVAC/R machine opens its page with every earlier visit, diagnosis, repair and part. The technician scans, reads and adds today's visit.">
+<meta name="theme-color" content="#08141F">
+<link rel="canonical" href="https://templogicsystems.com/equipulse/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Equipulse | Know the equipment. Know its history.">
+<meta property="og:description" content="A QR label on each HVAC/R machine opens its page with every earlier visit, diagnosis, repair and part. The technician scans, reads and adds today's visit.">
+<meta property="og:url" content="https://templogicsystems.com/equipulse/">
+<meta property="og:image" content="https://templogicsystems.com/equipulse/dashboard.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308141F'/%3E%3Cpath d='M6 6h7v7H6zM19 6h7v7h-7zM6 19h7v7H6zM19 19h3v3h-3zM24 24h2v2h-2z' fill='none' stroke='%2336C5F0' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Same design tokens as templogicsystems.com */
+:root{
+  --bg:#08141F; --surface:#101F2C; --deep:#050C12;
+  --blue:#198CFF; --cyan:#36C5F0; --ok:#35C48D; --watch:#E8A33D; --alert:#F0605D;
+  --text:#F4F7FA; --text-2:#AAB7C4; --text-3:#7E8D9C;
+  --line:rgba(170,183,196,.16); --line-2:rgba(170,183,196,.28);
+  --f-head:"Space Grotesk",Inter,system-ui,sans-serif;
+  --f-body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:8px; --r-lg:12px; --max:1120px; --nav-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;background:var(--bg);color:var(--text-2);font:400 1rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-head);color:var(--text);line-height:1.14;margin:0 0 .5em;font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(2.1rem,5vw,3.5rem);letter-spacing:-.025em}
+h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+h3{font-size:1.1rem}
+p{margin:0 0 1em}
+a{color:var(--cyan)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+section.tight{padding:56px 0}
+.alt{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.label{display:inline-flex;align-items:center;gap:8px;font:500 .75rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.label::before{content:"";width:18px;height:1px;background:var(--cyan)}
+.lead{font-size:1.15rem;max-width:60ch}
+.muted{color:var(--text-3)}
+.small{font-size:.86rem}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
+html[data-lang="en"] .es, html[data-lang="es"] .en{display:none !important}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--r);font:600 .95rem/1 var(--f-body);text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--blue);color:#050C12}
+.btn-primary:hover{background:#3a9dff}
+.btn-line{border-color:var(--line-2);color:var(--text)}
+.btn-line:hover{border-color:var(--text-2)}
+.btn-sm{min-height:38px;padding:0 16px;font-size:.88rem}
+
+header{position:sticky;top:0;z-index:50;background:rgba(8,20,31,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:600 1.15rem/1 var(--f-head)}
+.brand svg{flex:none}
+.brand small{display:block;font:500 .6rem/1 var(--f-mono);letter-spacing:.14em;color:var(--text-3);margin-top:4px;text-transform:uppercase}
+.links{display:flex;align-items:center;gap:22px}
+.links a.t{color:var(--text-2);text-decoration:none;font-size:.92rem}
+.links a.t:hover{color:var(--text)}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--text-3);font:500 .75rem/1 var(--f-mono);padding:8px 10px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--text)}
+@media (max-width:820px){.links a.t{display:none}}
+
+.hero{padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:26px;font:500 .78rem/1.4 var(--f-mono);color:var(--text-3)}
+.facts > span::before{content:"✓ ";color:var(--ok)}
+.shot{border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;background:#0f0f10;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.shot img{width:100%}
+figure{margin:0}
+figcaption{font-size:.84rem;color:var(--text-3);margin-top:10px}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:48px 0}}
+
+.push{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 16px;max-width:430px}
+.push .ico{width:34px;height:34px;border-radius:8px;background:#0f0f10;display:grid;place-items:center;flex:none;font-size:1.05rem}
+.push b{display:block;color:var(--text);font-size:.95rem}
+.push span{font-size:.88rem}
+.push time{margin-left:auto;font:500 .7rem/1.6 var(--f-mono);color:var(--text-3);flex:none}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.card h3{margin-bottom:8px}
+.card p{margin:0;font-size:.95rem}
+.card .k{font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:12px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split > *, .hero-grid > *{min-width:0}   /* a long code line must scroll inside its box, not widen the page */
+.split.rev > :first-child{order:2}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.split.rev > :first-child{order:0}}
+ul.ticks{list-style:none;padding:0;margin:18px 0 0}
+ul.ticks li{padding-left:26px;position:relative;margin-bottom:10px}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:6px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+
+pre{background:var(--deep);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 14px;font:400 .84rem/1.6 var(--f-mono);color:var(--text)}
+pre .c{color:var(--text-3)}
+pre .h{color:var(--cyan)}
+code{font-family:var(--f-mono);font-size:.88em;color:var(--text)}
+.tag{font:500 .68rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);display:block;margin:0 0 8px}
+
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid #2e2e32;background:#18181a;color:#ececec;font:500 13px/1.3 system-ui,sans-serif}
+.pill i{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.pill.down i{background:#f87171}
+.pills{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 20px}
+
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:32px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.step::before{counter-increment:s;content:counter(s);width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font:500 .95rem/1 var(--f-mono);color:var(--cyan)}
+.step h3{margin:8px 0 6px}
+.step pre{margin-top:10px}
+.step > div{min-width:0}
+
+.table{overflow-x:auto;margin-top:28px;border:1px solid var(--line);border-radius:var(--r-lg)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .72rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500}
+tr.me td{background:rgba(25,140,255,.07)}
+
+.limits{border-left:3px solid var(--watch);background:var(--surface);border-radius:var(--r);padding:20px 22px;margin-top:28px}
+.limits ul{margin:8px 0 0;padding-left:20px}
+.limits li{margin-bottom:6px}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details summary{cursor:pointer;color:var(--text);font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-family:var(--f-mono);color:var(--cyan)}
+details[open] summary::after{content:"−"}
+details p{margin:12px 0 0;max-width:70ch}
+
+.final{text-align:center}
+.final .lead{margin:0 auto 26px}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:.85rem;color:var(--text-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--text-2)}
+
+.shot.light{background:#f3f5f4}
+.warn-box{border-left:3px solid var(--watch);background:var(--surface);border-radius:var(--r);padding:16px 20px;margin-top:26px;max-width:72ch}
+.warn-box b{color:var(--text)}
+.phones{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.phones .shot{max-width:300px}
+@media (max-width:600px){.phones{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Equipulse">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M6 6h7v7H6zM19 6h7v7h-7zM6 19h7v7H6zM19 19h3v3h-3zM24 24h2v2h-2z" fill="none" stroke="#36C5F0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Equipulse<small><span class="en">by TempLogic Systems</span><span class="es">de TempLogic Systems</span></small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a class="t" href="#what"><span class="en">How it works</span><span class="es">Cómo funciona</span></a><a class="t" href="#trust"><span class="en">The history</span><span class="es">El historial</span></a><a class="t" href="#limits"><span class="en">Limits</span><span class="es">Límites</span></a><a class="t" href="#faq"><span class="en">Questions</span><span class="es">Preguntas</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label"><span class="en">Equipment history</span><span class="es">Historial de equipos</span></span>
+      <h1><span class="en">Know the equipment. Know its history.</span><span class="es">Conozca el equipo. Conozca su historia.</span></h1>
+      <p class="lead"><span class="en">A QR label on each machine opens its page: what it is, and every earlier visit, diagnosis, confirmed cause, repair and part. The technician scans it, reads what was done before, and adds today's visit.</span><span class="es">Una etiqueta QR en cada máquina abre su página: qué es, y cada visita, diagnóstico, causa confirmada, reparación y pieza anteriores. El técnico la escanea, lee lo que se hizo antes y agrega la visita de hoy.</span></p>
+      <div class="cta">
+        <a class="btn btn-primary js-mail" href="#contact"><span class="en">Tell me when it is ready</span><span class="es">Avíseme cuando esté listo</span></a>
+        <a class="btn btn-line" href="#what"><span class="en">See what it does</span><span class="es">Ver qué hace</span></a>
+      </div>
+      <div class="facts"><span><span class="en">One QR label per machine</span><span class="es">Una etiqueta QR por máquina</span></span><span><span class="en">History cannot be changed</span><span class="es">El historial no se puede cambiar</span></span><span><span class="en">54 automated tests</span><span class="es">54 pruebas automáticas</span></span></div>
+    </div>
+    <figure><div class="shot light"><img src="dashboard.png" width="1440" height="1010" alt="Equipulse dashboard: 5 machines, 10 service visits, 2 follow-ups required, and the list of recent visits"></div><figcaption><span class="en">The real screen, with fictional demo records.</span><span class="es">La pantalla real, con registros de demostración ficticios.</span></figcaption></figure>
+  </div>
+</section>
+<section id="what" class="alt">
+  <div class="wrap split">
+    <div>
+      <span class="label"><span class="en">How it works</span><span class="es">Cómo funciona</span></span>
+      <h2><span class="en">Scan, read, add.</span><span class="es">Escanee, lea, agregue.</span></h2>
+      <div class="steps"><div class="step"><div><h3><span class="en">Register the machine</span><span class="es">Registre la máquina</span></h3><p><span class="en">Only a name and a type are required. It gets a permanent ID that never changes.</span><span class="es">Solo se ocupa un nombre y un tipo. Recibe un ID permanente que nunca cambia.</span></p></div></div><div class="step"><div><h3><span class="en">Print and attach its label</span><span class="es">Imprima y pegue su etiqueta</span></h3><p><span class="en">The label has the ID and a QR code.</span><span class="es">La etiqueta trae el ID y un código QR.</span></p></div></div><div class="step"><div><h3><span class="en">Scan it at the next visit</span><span class="es">Escanéela en la siguiente visita</span></h3><p><span class="en">The machine's page opens with its full history, oldest to newest.</span><span class="es">Se abre la página de la máquina con todo su historial, del más viejo al más nuevo.</span></p></div></div><div class="step"><div><h3><span class="en">Add today's visit</span><span class="es">Agregue la visita de hoy</span></h3><p><span class="en">Date, technician and complaint are required; symptoms, readings, diagnosis, confirmed cause, repair, parts and refrigerant are optional.</span><span class="es">Fecha, técnico y queja son obligatorios; síntomas, lecturas, diagnóstico, causa confirmada, reparación, piezas y refrigerante son opcionales.</span></p></div></div></div>
+    </div>
+    <div class="phones">
+      <figure><div class="shot light"><img src="equipment-phone.png" width="390" height="1500" loading="lazy" alt="A machine's page on a phone: its information, its QR code and its service history"></div><figcaption><span class="en">A machine's page on a phone.</span><span class="es">La página de una máquina en el celular.</span></figcaption></figure>
+      <figure><div class="shot light"><img src="label.png" width="350" height="430" loading="lazy" alt="Printable equipment label with the TempLogic Systems name, a QR code and the equipment ID"></div><figcaption><span class="en">The printable label.</span><span class="es">La etiqueta para imprimir.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+<section id="trust">
+  <div class="wrap">
+    <span class="label"><span class="en">Why you can trust the history</span><span class="es">Por qué puede confiar en el historial</span></span>
+    <h2><span class="en">What was written stays written.</span><span class="es">Lo que se escribió, escrito se queda.</span></h2>
+    <div class="grid3"><div class="card"><span class="k"><span class="en">Append-only</span><span class="es">Solo se agrega</span></span><h3><span class="en">Visits cannot be edited or deleted</span><span class="es">Las visitas no se pueden editar ni borrar</span></h3><p><span class="en">There is no edit or delete button, and the database itself refuses to change a past visit. A new visit is always a new record.</span><span class="es">No hay botón de editar ni de borrar, y la base de datos misma se niega a cambiar una visita pasada. Una visita nueva siempre es un registro nuevo.</span></p></div><div class="card"><span class="k"><span class="en">No duplicates</span><span class="es">Sin duplicados</span></span><h3><span class="en">A double tap does not save twice</span><span class="es">Un doble toque no guarda dos veces</span></h3><p><span class="en">If the phone sends the same form twice, the second one returns the first visit instead of creating another.</span><span class="es">Si el celular manda el mismo formulario dos veces, el segundo regresa la primera visita en vez de crear otra.</span></p></div><div class="card"><span class="k"><span class="en">Follow-ups</span><span class="es">Pendientes</span></span><h3><span class="en">What still needs a return visit</span><span class="es">Lo que todavía ocupa otra visita</span></h3><p><span class="en">The dashboard lists machines whose latest visit asked for a follow-up. Typing in an older visit later cannot quietly reopen or close it.</span><span class="es">El panel enseña las máquinas cuya última visita pidió seguimiento. Capturar después una visita vieja no puede abrirlo ni cerrarlo a escondidas.</span></p></div><div class="card"><span class="k"><span class="en">Search</span><span class="es">Búsqueda</span></span><h3><span class="en">Find a machine fast</span><span class="es">Encuentre una máquina rápido</span></h3><p><span class="en">By ID, customer, site, type, manufacturer, model, serial or name.</span><span class="es">Por ID, cliente, sitio, tipo, fabricante, modelo, serie o nombre.</span></p></div><div class="card"><span class="k"><span class="en">It only records</span><span class="es">Solo registra</span></span><h3><span class="en">It never touches the equipment</span><span class="es">Nunca toca el equipo</span></h3><p><span class="en">No diagnosis engine, no AI, no remote control and no setpoint changes. It keeps what people wrote.</span><span class="es">Sin motor de diagnóstico, sin IA, sin control remoto y sin cambiar setpoints. Guarda lo que la gente escribió.</span></p></div><div class="card"><span class="k"><span class="en">Your data</span><span class="es">Sus datos</span></span><h3><span class="en">One file you own</span><span class="es">Un archivo que es suyo</span></h3><p><span class="en">Everything lives in one database file on your own computer. No tracking and no outside services.</span><span class="es">Todo vive en un archivo de base de datos en su propia computadora. Sin rastreo y sin servicios de fuera.</span></p></div></div>
+  </div>
+</section>
+<section id="limits" class="alt">
+  <div class="wrap">
+    <span class="label"><span class="en">Limits</span><span class="es">Límites</span></span>
+    <h2><span class="en">What it does not do yet.</span><span class="es">Lo que todavía no hace.</span></h2>
+    <div class="limits"><ul><li><span class="en">Scanning from a phone needs the portal on an address the phone can reach. That setup is not done yet: today it runs on one computer, and the QR opens there.</span><span class="es">Escanear desde un celular ocupa que el portal esté en una dirección que el celular alcance. Esa instalación todavía no está hecha: hoy corre en una computadora, y el QR abre ahí.</span></li><li><span class="en">One technician account. No companies, roles or separate customers yet.</span><span class="es">Una sola cuenta de técnico. Todavía sin compañías, roles ni clientes separados.</span></li><li><span class="en">The screen is in English only for now.</span><span class="es">Por ahora la pantalla está solo en inglés.</span></li><li><span class="en">No photo uploads, PDF reports, imports or exports yet.</span><span class="es">Todavía sin subir fotos, reportes en PDF, importar ni exportar.</span></li><li><span class="en">A wrong entry cannot be corrected in place; a proper correction process is still to be built.</span><span class="es">Una captura equivocada no se puede corregir ahí mismo; el proceso de corrección todavía está por hacerse.</span></li><li><span class="en">No automatic backups. It has not had an independent security audit.</span><span class="es">Sin respaldos automáticos. No ha tenido una auditoría de seguridad independiente.</span></li></ul></div>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <span class="label"><span class="en">Questions</span><span class="es">Preguntas</span></span>
+    <h2><span class="en">Before you ask.</span><span class="es">Antes de que pregunte.</span></h2>
+    <details><summary><span class="en">What if I change the web address later?</span><span class="es">¿Y si después cambio la dirección web?</span></summary><p><span class="en">The machine's ID never changes. A label already printed keeps the old address, so it must be reprinted or the old address redirected.</span><span class="es">El ID de la máquina nunca cambia. Una etiqueta ya impresa conserva la dirección vieja, así que hay que reimprimirla o redirigir la dirección vieja.</span></p></details><details><summary><span class="en">Does it diagnose?</span><span class="es">¿Diagnostica?</span></summary><p><span class="en">No. It is a record book: it keeps what the technician wrote and shows it to the next one.</span><span class="es">No. Es un libro de registro: guarda lo que el técnico escribió y se lo enseña al siguiente.</span></p></details><details><summary><span class="en">What do I need to run it?</span><span class="es">¿Qué ocupo para correrlo?</span></summary><p><span class="en">A computer with Python 3.12 or newer. It opens in a web browser.</span><span class="es">Una computadora con Python 3.12 o más nuevo. Se abre en un navegador.</span></p></details><details><summary><span class="en">Can I buy it today?</span><span class="es">¿Puedo comprarlo hoy?</span></summary><p><span class="en">Not yet. Write to us and you will hear first.</span><span class="es">Todavía no. Escríbanos y será de los primeros en saber.</span></p></details>
+  </div>
+</section>
+<section id="contact" class="alt final">
+  <div class="wrap">
+    <h2><span class="en">Want to know when it is ready?</span><span class="es">¿Quiere saber cuando esté listo?</span></h2>
+    <p class="lead"><span class="en">Send one email. You get one reply when Equipulse is available, and nothing else.</span><span class="es">Mande un correo. Recibe una respuesta cuando Equipulse esté disponible, y nada más.</span></p>
+    <a class="btn btn-primary js-mail" href="#contact"><span class="en">Email us</span><span class="es">Escríbanos</span></a>
+    <p class="small muted" style="margin-top:14px"><span class="js-addr"></span></p>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> TempLogic Systems</span>
+    <span><a href="https://templogicsystems.com/">templogicsystems.com</a></span>
+  </div>
+</footer>
+<script>
+(function(){
+  var EMAIL = "gnarofdez@templogicsystems.com", NAME = 'Equipulse', T = ['Know the equipment. Know its history.', 'Conozca el equipo. Conozca su historia.'];
+  var root = document.documentElement;
+  function mailto(){
+    var es = root.getAttribute("data-lang") === "es";
+    return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(NAME + (es ? ": avíseme cuando esté listo" : ": tell me when it is ready"));
+  }
+  function setLang(l){
+    root.setAttribute("data-lang", l); root.lang = l;
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.setLang === l); });
+    document.querySelectorAll(".js-mail").forEach(function(a){ a.href = mailto(); });
+    document.title = NAME + " | " + T[l === "es" ? 1 : 0];
+    try { localStorage.setItem("tl-lang", l); } catch(e){}
+  }
+  var saved = null; try { saved = localStorage.getItem("tl-lang"); } catch(e){}
+  setLang(saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en"));
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.dataset.setLang); }); });
+  document.querySelectorAll(".js-addr").forEach(function(s){ s.textContent = EMAIL; });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
