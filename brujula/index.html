@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brújula OS | A computer that explains itself</title>
+<meta name="description" content="Brújula OS is a layer on top of Linux that watches the machine, follows rules you write in plain English or Spanish, and always explains why. No cloud, no AI.">
+<meta name="theme-color" content="#08141F">
+<link rel="canonical" href="https://templogicsystems.com/brujula/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brújula OS | A computer that explains itself">
+<meta property="og:description" content="A layer on top of Linux that watches the machine, follows rules you write in plain English or Spanish, and always explains why.">
+<meta property="og:url" content="https://templogicsystems.com/brujula/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308141F'/%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%2336C5F0' stroke-width='2'/%3E%3Cpath d='M20.5 11.5 18 18l-6.5 2.5L14 14z' fill='%2336C5F0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Same design tokens as templogicsystems.com */
+:root{
+  --bg:#08141F; --surface:#101F2C; --deep:#050C12;
+  --blue:#198CFF; --cyan:#36C5F0; --ok:#35C48D; --watch:#E8A33D; --alert:#F0605D;
+  --text:#F4F7FA; --text-2:#AAB7C4; --text-3:#7E8D9C;
+  --line:rgba(170,183,196,.16); --line-2:rgba(170,183,196,.28);
+  --f-head:"Space Grotesk",Inter,system-ui,sans-serif;
+  --f-body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:8px; --r-lg:12px; --max:1120px; --nav-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;background:var(--bg);color:var(--text-2);font:400 1rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-head);color:var(--text);line-height:1.14;margin:0 0 .5em;font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(2.1rem,5vw,3.5rem);letter-spacing:-.025em}
+h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+h3{font-size:1.1rem}
+p{margin:0 0 1em}
+a{color:var(--cyan)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+section.tight{padding:56px 0}
+.alt{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.label{display:inline-flex;align-items:center;gap:8px;font:500 .75rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.label::before{content:"";width:18px;height:1px;background:var(--cyan)}
+.lead{font-size:1.15rem;max-width:60ch}
+.muted{color:var(--text-3)}
+.small{font-size:.86rem}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:2px}
+html[data-lang="en"] .es, html[data-lang="es"] .en{display:none !important}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--r);font:600 .95rem/1 var(--f-body);text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--blue);color:#050C12}
+.btn-primary:hover{background:#3a9dff}
+.btn-line{border-color:var(--line-2);color:var(--text)}
+.btn-line:hover{border-color:var(--text-2)}
+.btn-sm{min-height:38px;padding:0 16px;font-size:.88rem}
+
+header{position:sticky;top:0;z-index:50;background:rgba(8,20,31,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:600 1.15rem/1 var(--f-head)}
+.brand svg{flex:none}
+.brand small{display:block;font:500 .6rem/1 var(--f-mono);letter-spacing:.14em;color:var(--text-3);margin-top:4px;text-transform:uppercase}
+.links{display:flex;align-items:center;gap:22px}
+.links a.t{color:var(--text-2);text-decoration:none;font-size:.92rem}
+.links a.t:hover{color:var(--text)}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--text-3);font:500 .75rem/1 var(--f-mono);padding:8px 10px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--text)}
+@media (max-width:820px){.links a.t{display:none}}
+
+.hero{padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:26px;font:500 .78rem/1.4 var(--f-mono);color:var(--text-3)}
+.facts > span::before{content:"✓ ";color:var(--ok)}
+.shot{border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;background:#0f0f10;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.shot img{width:100%}
+figure{margin:0}
+figcaption{font-size:.84rem;color:var(--text-3);margin-top:10px}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:48px 0}}
+
+.push{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:14px 16px;max-width:430px}
+.push .ico{width:34px;height:34px;border-radius:8px;background:#0f0f10;display:grid;place-items:center;flex:none;font-size:1.05rem}
+.push b{display:block;color:var(--text);font-size:.95rem}
+.push span{font-size:.88rem}
+.push time{margin-left:auto;font:500 .7rem/1.6 var(--f-mono);color:var(--text-3);flex:none}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.card h3{margin-bottom:8px}
+.card p{margin:0;font-size:.95rem}
+.card .k{font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:12px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.grid3{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split > *, .hero-grid > *{min-width:0}   /* a long code line must scroll inside its box, not widen the page */
+.split.rev > :first-child{order:2}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}.split.rev > :first-child{order:0}}
+ul.ticks{list-style:none;padding:0;margin:18px 0 0}
+ul.ticks li{padding-left:26px;position:relative;margin-bottom:10px}
+ul.ticks li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:6px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+
+pre{background:var(--deep);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 14px;font:400 .84rem/1.6 var(--f-mono);color:var(--text)}
+pre .c{color:var(--text-3)}
+pre .h{color:var(--cyan)}
+code{font-family:var(--f-mono);font-size:.88em;color:var(--text)}
+.tag{font:500 .68rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);display:block;margin:0 0 8px}
+
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid #2e2e32;background:#18181a;color:#ececec;font:500 13px/1.3 system-ui,sans-serif}
+.pill i{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.pill.down i{background:#f87171}
+.pills{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 20px}
+
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:32px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+.step::before{counter-increment:s;content:counter(s);width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font:500 .95rem/1 var(--f-mono);color:var(--cyan)}
+.step h3{margin:8px 0 6px}
+.step pre{margin-top:10px}
+.step > div{min-width:0}
+
+.table{overflow-x:auto;margin-top:28px;border:1px solid var(--line);border-radius:var(--r-lg)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .72rem/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500}
+tr.me td{background:rgba(25,140,255,.07)}
+
+.limits{border-left:3px solid var(--watch);background:var(--surface);border-radius:var(--r);padding:20px 22px;margin-top:28px}
+.limits ul{margin:8px 0 0;padding-left:20px}
+.limits li{margin-bottom:6px}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details summary{cursor:pointer;color:var(--text);font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-family:var(--f-mono);color:var(--cyan)}
+details[open] summary::after{content:"−"}
+details p{margin:12px 0 0;max-width:70ch}
+
+.final{text-align:center}
+.final .lead{margin:0 auto 26px}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:.85rem;color:var(--text-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--text-2)}
+
+/* Brújula: cuadros de terminal con la salida real del programa */
+.term{background:#05090d;border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.term-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);font:500 .7rem/1 var(--f-mono);color:var(--text-3);letter-spacing:.06em}
+.term-bar i{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
+.term-bar span{margin-left:8px}
+.term pre{border:0;border-radius:0;margin:0;background:none;font-size:.8rem;line-height:1.65;padding:16px 18px}
+.term .p{color:var(--cyan)} .term .ok{color:var(--ok)} .term .bad{color:var(--alert)} .term .w{color:var(--watch)} .term .d{color:var(--text-3)}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.part{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.part .lang-tag{font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;color:var(--cyan);text-transform:uppercase;display:block;margin-bottom:12px}
+.part p{margin:0;font-size:.95rem}
+@media (max-width:900px){.parts{grid-template-columns:1fr}}
+.ed{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.ed .card ul{margin:12px 0 0;padding-left:20px;font-size:.95rem}
+.ed .card li{margin-bottom:6px}
+@media (max-width:800px){.ed{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Brújula OS">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="13.5" fill="none" stroke="#36C5F0" stroke-width="2"/><path d="M20.5 11.5 18 18l-6.5 2.5L14 14z" fill="#36C5F0"/><circle cx="16" cy="16" r="1.4" fill="#08141F"/></svg>
+      <span>Brújula OS<small><span class="en">by TempLogic Systems</span><span class="es">de TempLogic Systems</span></small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a class="t" href="#how"><span class="en">How it works</span><span class="es">Cómo funciona</span></a>
+      <a class="t" href="#rules"><span class="en">Rules</span><span class="es">Reglas</span></a>
+      <a class="t" href="#editions"><span class="en">Editions</span><span class="es">Ediciones</span></a>
+      <a class="t" href="#limits"><span class="en">Limits</span><span class="es">Límites</span></a>
+      <a class="t" href="#faq"><span class="en">Questions</span><span class="es">Preguntas</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label"><span class="en">Intelligent without AI</span><span class="es">Inteligente sin IA</span></span>
+      <h1><span class="en">A computer that explains itself.</span><span class="es">Una computadora que se explica sola.</span></h1>
+      <p class="lead"><span class="en">Brújula OS is a layer on top of Linux that watches the machine, follows rules you write in plain English or Spanish, and always tells you why it did what it did. It runs on the computer itself: no cloud, no accounts.</span><span class="es">Brújula OS es una capa encima de Linux que vigila la máquina, sigue reglas que usted escribe en español o inglés sencillo, y siempre le dice por qué hizo lo que hizo. Corre en la computadora misma: sin nube y sin cuentas.</span></p>
+      <div class="cta">
+        <a class="btn btn-primary js-mail" href="#contact"><span class="en">Tell me when it is ready</span><span class="es">Avíseme cuando esté listo</span></a>
+        <a class="btn btn-line" href="#how"><span class="en">See how it works</span><span class="es">Ver cómo funciona</span></a>
+      </div>
+      <div class="facts">
+        <span><span class="en">English and Spanish</span><span class="es">Inglés y español</span></span>
+        <span><span class="en">Works without internet</span><span class="es">Funciona sin internet</span></span>
+        <span><span class="en">197 automated tests</span><span class="es">197 pruebas automáticas</span></span>
+      </div>
+    </div>
+    <figure>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i><span><span class="en">two laptops watching each other</span><span class="es">dos laptops que se cuidan</span></span></div><pre class="en"><span class="d">2026-10-11 17:38</span>  <span class="bad">🔴 lenovo stopped answering</span> 1 min 30 s ago (last signal 17:36).
+  Last I knew: battery 2% UNPLUGGED, 52.8 °C, free memory 3231 MB.
+  Most likely: <b>it ran out of battery.</b>
+
+<span class="d">2026-10-12 05:12</span>  <span class="ok">✅ lenovo came back</span> after 11 h 35 min.
+  It restarted (up for 36 s). Now: battery 0% plugged in.</pre><pre class="es"><span class="d">2026-10-11 17:38</span>  <span class="bad">🔴 lenovo dejó de responder</span> hace 1 min 30 s (última señal 17:36).
+  Lo último que supe: batería 2% SIN cargador, 52.8 °C, memoria libre 3231 MB.
+  Lo más probable: <b>se quedó sin batería.</b>
+
+<span class="d">2026-10-12 05:12</span>  <span class="ok">✅ lenovo volvió</span> después de 11 h 35 min.
+  Se reinició (lleva prendida 36 s). Ahora: batería 0% conectada.</pre></div>
+      <figcaption><span class="en">Real messages from our own two laptops, translated from Spanish. One watches the other and explains what most likely happened.</span><span class="es">Mensajes reales de nuestras dos laptops. Una vigila a la otra y explica qué fue lo más probable.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <span class="label"><span class="en">How it works</span><span class="es">Cómo funciona</span></span>
+    <h2><span class="en">Three parts, each with one job.</span><span class="es">Tres partes, cada una con un solo trabajo.</span></h2>
+    <p class="lead"><span class="en">The part that decides cannot act, and the part that acts cannot decide. That separation is the whole idea.</span><span class="es">La parte que decide no puede actuar, y la parte que actúa no puede decidir. Esa separación es toda la idea.</span></p>
+    <div class="parts">
+      <div class="part"><span class="lang-tag"><span class="en">Senses · C</span><span class="es">Sentidos · C</span></span><h3><span class="en">It reads the machine</span><span class="es">Lee la máquina</span></h3>
+        <p><span class="en">A small C program reads memory, CPU, temperature, disk and battery every second and hands the numbers to the other two.</span><span class="es">Un programa pequeño en C lee memoria, CPU, temperatura, disco y batería cada segundo y les pasa los números a los otros dos.</span></p></div>
+      <div class="part"><span class="lang-tag"><span class="en">Brain · Python</span><span class="es">Cerebro · Python</span></span><h3><span class="en">It decides and explains</span><span class="es">Decide y explica</span></h3>
+        <p><span class="en">It reads your rules, decides, writes down why, and tells your phone. It has no hands: it can only ask the guardian.</span><span class="es">Lee sus reglas, decide, anota por qué y le avisa al celular. No tiene manos: solo puede pedirle al guardián.</span></p></div>
+      <div class="part"><span class="lang-tag"><span class="en">Hands · Rust</span><span class="es">Manos · Rust</span></span><h3><span class="en">The guardian acts, or refuses</span><span class="es">El guardián actúa, o se niega</span></h3>
+        <p><span class="en">The only part that can change anything. It does only what a short list allows, never runs a shell, and writes every decision to a log.</span><span class="es">La única parte que puede cambiar algo. Hace solo lo que una lista corta permite, nunca corre un shell y anota cada decisión en una bitácora.</span></p></div>
+    </div>
+    <ul class="ticks" style="margin-top:28px">
+      <li><span class="en">No guardian, no action. No fresh readings, no action. When in doubt it does nothing.</span><span class="es">Sin guardián no hay acción. Sin lecturas frescas no hay acción. En la duda, no hace nada.</span></li>
+      <li><span class="en">The guardian checks its own sensor data and refuses when the machine is too hot or too many actions pile up.</span><span class="es">El guardián revisa sus propios datos del sensor y se niega si la máquina está muy caliente o se juntan demasiadas acciones.</span></li>
+      <li><span class="en">Actions you mark as sensitive wait for you: Approve or Deny from your phone. No phone set up means it is not done.</span><span class="es">Las acciones que usted marque como delicadas lo esperan: Aprobar o Negar desde su celular. Si no hay celular configurado, no se hace.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap split">
+    <div>
+      <span class="label"><span class="en">Rules</span><span class="es">Reglas</span></span>
+      <h2><span class="en">You write the rules in plain words.</span><span class="es">Usted escribe las reglas con palabras sencillas.</span></h2>
+      <p><span class="en">One line per rule, in a text file, in English or Spanish. The grammar is fixed, so there is nothing to guess: a mistake is reported with its line number and a “did you mean”.</span><span class="es">Un renglón por regla, en un archivo de texto, en español o inglés. La gramática es fija, así que no hay nada que adivinar: un error se reporta con su número de renglón y un “quiso decir”.</span></p>
+      <ul class="ticks">
+        <li><span class="en">Brújula repeats each rule back so you see exactly what it understood.</span><span class="es">Brújula le repite cada regla para que vea exactamente qué entendió.</span></li>
+        <li><span class="en">Rehearse a rule against the history it already has, before you turn it on.</span><span class="es">Ensaye una regla contra el historial que ya tiene, antes de prenderla.</span></li>
+        <li><span class="en">No AI anywhere: the same readings always give the same answer.</span><span class="es">Sin IA en ningún lado: las mismas lecturas siempre dan la misma respuesta.</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i><span><span class="en">your rules, read back</span><span class="es">sus reglas, leídas de vuelta</span></span></div><pre class="en"><span class="p">$ brujula --lang en reglas</span>
+<span class="ok">✅ I understood 5 rules:</span>
+  • SI la batería baja de 15% Y no está conectada ENTONCES avísame
+      <span class="d">when: battery (%) &lt; 15 and unplugged  →  notify</span>
+  • SI el disco baja de 10% POR 1 minuto ENTONCES avísame Y limpia los temporales
+      <span class="d">when: free disk (%) &lt; 10 for 60s  →  notify, guardian → clean_tmp</span>
+  • SI la temperatura sube de 85 grados POR 30 segundos ENTONCES avísame
+      <span class="d">when: CPU temperature (°C) &gt; 85 for 30s  →  notify</span>
+  <span class="d">… and the other 2</span>
+
+<span class="p">$ brujula --lang en ensayo "IF the temperature goes above 70 FOR 5 minutes THEN notify me"</span>
+🧪 REHEARSAL MODE with 3558 minutes of history (59.5 h):
+      → would have fired <span class="w">42 time(s)</span>: 09/10 19:58, 09/10 20:08, 09/10 20:18, 09/10 20:35, 09/10 20:45 and 37 more</pre><pre class="es"><span class="p">$ brujula reglas</span>
+<span class="ok">✅ Entendí 5 reglas:</span>
+  • SI la batería baja de 15% Y no está conectada ENTONCES avísame
+      <span class="d">cuando: batería (%) &lt; 15 y desconectada  →  notify</span>
+  • SI el disco baja de 10% POR 1 minuto ENTONCES avísame Y limpia los temporales
+      <span class="d">cuando: disco libre (%) &lt; 10 por 60s  →  notify, guardián → clean_tmp</span>
+  • SI la temperatura sube de 85 grados POR 30 segundos ENTONCES avísame
+      <span class="d">cuando: temperatura CPU (°C) &gt; 85 por 30s  →  notify</span>
+  <span class="d">… y las otras 2</span>
+
+<span class="p">$ brujula ensayo "SI la temperatura sube de 70 POR 5 minutos ENTONCES avísame"</span>
+🧪 MODO ENSAYO con 3558 minutos de historial (59.5 h):
+      → se habría disparado <span class="w">42 vez/veces</span>: 09/10 19:58, 09/10 20:08, 09/10 20:18, 09/10 20:35, 09/10 20:45 y 37 más</pre></div>
+      <figcaption><span class="en">Real output. The rules were written in Spanish; Brújula explains them in the language you ask for.</span><span class="es">Salida real del programa.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap split rev">
+    <figure>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i><span><span class="en">black box</span><span class="es">caja negra</span></span></div><pre class="en"><span class="p">$ brujula caja-negra</span>
+📦 BLACK BOX: <span class="bad">the previous session did NOT end cleanly.</span>
+The computer did NOT restart: only Brújula stopped suddenly
+(it was closed by force or the program failed).
+In the 4 min before that: max temperature 87 °C, min free memory 3460 MB, max CPU 50%.
+The sensors looked normal: most likely someone closed Brújula by force.
+
+Last recorded minutes (max temp / min memory / max CPU):
+  06:26  50.0 °C  2220.3 MB  38.3%
+  06:27  51.0 °C  2239.2 MB  33.7%
+  06:28  50.0 °C  2292.3 MB  41.2%</pre><pre class="es"><span class="p">$ brujula caja-negra</span>
+📦 CAJA NEGRA: <span class="bad">la sesión anterior NO terminó bien.</span>
+La computadora NO se reinició: solo Brújula se detuvo de golpe
+(lo cerraron a la fuerza o falló el programa).
+En los 4 min antes de eso: temperatura máx 87 °C, memoria libre mín 3460 MB, CPU máx 50%.
+Los sensores se veían normales: lo más probable es que alguien cerró Brújula a la fuerza.
+
+Últimos minutos registrados (máx temp / mín memoria / máx CPU):
+  06:26  50.0 °C  2220.3 MB  38.3%
+  06:27  51.0 °C  2239.2 MB  33.7%
+  06:28  50.0 °C  2292.3 MB  41.2%</pre></div>
+      <figcaption><span class="en">Real report, translated from Spanish.</span><span class="es">Reporte real del programa.</span></figcaption>
+    </figure>
+    <div>
+      <span class="label"><span class="en">Black box</span><span class="es">Caja negra</span></span>
+      <h2><span class="en">It tells you what happened while you were not looking.</span><span class="es">Le dice qué pasó mientras usted no estaba viendo.</span></h2>
+      <p><span class="en">Brújula keeps every reading of the last 15 minutes and a summary per minute for 14 days. If it did not stop cleanly, the next start explains it.</span><span class="es">Brújula guarda cada lectura de los últimos 15 minutos y un resumen por minuto de 14 días. Si no terminó bien, el siguiente arranque lo explica.</span></p>
+      <ul class="ticks">
+        <li><span class="en">Did the computer restart, or did only Brújula stop?</span><span class="es">¿Se reinició la computadora, o solo se detuvo Brújula?</span></li>
+        <li><span class="en">The likely cause: overheating, out of memory, battery died unplugged, CPU stuck, disk full.</span><span class="es">La causa probable: sobrecalentamiento, sin memoria, batería agotada sin cargador, CPU atorado, disco lleno.</span></li>
+        <li><span class="en">Two machines can watch each other over a private network and say when one goes quiet and why.</span><span class="es">Dos máquinas pueden cuidarse por una red privada y avisar cuando una se queda callada y por qué.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="editions">
+  <div class="wrap">
+    <span class="label"><span class="en">Editions</span><span class="es">Ediciones</span></span>
+    <h2><span class="en">One system, two editions.</span><span class="es">Un sistema, dos ediciones.</span></h2>
+    <p class="lead"><span class="en">Both are the same Brújula: guardian, rules, black box, phone permission and neighbours. Each one boots from a USB stick without writing anything to the computer's disk.</span><span class="es">Las dos son la misma Brújula: guardián, reglas, caja negra, permiso del celular y vecinos. Cada una arranca desde una memoria USB sin escribir nada en el disco de la computadora.</span></p>
+    <div class="ed">
+      <div class="card"><span class="k">General</span><h3><span class="en">For any company's computers</span><span class="es">Para las computadoras de cualquier compañía</span></h3>
+        <p><span class="en">For people who want their machines watched locally, with rules they can read.</span><span class="es">Para quien quiere sus máquinas vigiladas en el lugar, con reglas que puede leer.</span></p>
+        <ul><li><span class="en">Rules in plain language</span><span class="es">Reglas en lenguaje sencillo</span></li><li><span class="en">Black box and neighbours</span><span class="es">Caja negra y vecinos</span></li><li><span class="en">Phone alerts and phone permission</span><span class="es">Alertas y permiso desde el celular</span></li></ul></div>
+      <div class="card"><span class="k"><span class="en">Technician</span><span class="es">Técnico</span></span><h3><span class="en">For commercial refrigeration</span><span class="es">Para refrigeración comercial</span></h3>
+        <p><span class="en">Everything in General, plus tools for walk-in coolers, freezers and display cases.</span><span class="es">Todo lo de la General, más herramientas para cuartos fríos, congeladores y vitrinas.</span></p>
+        <ul><li><span class="en">P-T charts from the manufacturers for 7 refrigerants</span><span class="es">Tablas P-T de los fabricantes para 7 refrigerantes</span></li><li><span class="en">Diagnosis from 8 patterns, with the reason and how to confirm</span><span class="es">Diagnóstico con 8 patrones, con la razón y cómo confirmarlo</span></li><li><span class="en">It reads and advises; it never touches the equipment</span><span class="es">Lee y aconseja; nunca toca el equipo</span></li></ul></div>
+    </div>
+    <figure style="margin-top:28px">
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i><span><span class="en">technician edition</span><span class="es">edición técnico</span></span></div><pre class="en"><span class="p">$ brujula tecnico pt R-448A 40</span>
+R-448A at 40.0 psig → bubble (liquid) 5.5°F · dew (vapor) 16.0°F
+<span class="d">Source: Honeywell G525-710 (2017)</span>
+
+<span class="p">$ brujula tecnico diagnostico walkin-congelador succion=12.7 descarga=230 t_succion=8 t_liquido=97 caja=4 ambiente=85 visor=burbujas</span>
+🧭 Walk-in congelador (ejemplo) (R-404A)
+  Superheat: 33.0°F → <span class="w">high</span> (expected 6–12)
+  Subcooling: 1.0°F → <span class="w">low</span> (expected 6–15)
+  Box: 4.0°F → <span class="w">high</span> (target -10.0°F ±5)
+
+Most likely:
+1. <span class="bad">⚠️ Low refrigerant charge (leak)</span> [soon]
+   Why: the evaporator is starved (high superheat) and there is no extra liquid in the condenser (low subcooling)
+   What to do: repair the leak BEFORE recharging, record the leak rate per EPA 608 and charge to manufacturer spec
+
+<span class="d">Brújula never touches the equipment: it only reads and advises. You decide.</span></pre><pre class="es"><span class="p">$ brujula tecnico pt R-448A 40</span>
+R-448A a 40.0 psig → burbuja (líquido) 5.5°F · rocío (vapor) 16.0°F
+<span class="d">Fuente: Honeywell G525-710 (2017)</span>
+
+<span class="p">$ brujula tecnico diagnostico walkin-congelador succion=12.7 descarga=230 t_succion=8 t_liquido=97 caja=4 ambiente=85 visor=burbujas</span>
+🧭 Walk-in congelador (ejemplo) (R-404A)
+  Sobrecalentamiento: 33.0°F → <span class="w">alto</span> (esperado 6–12)
+  Subenfriamiento: 1.0°F → <span class="w">bajo</span> (esperado 6–15)
+  Caja: 4.0°F → <span class="w">alta</span> (objetivo -10.0°F ±5)
+
+Lo más probable:
+1. <span class="bad">⚠️ Falta de refrigerante (fuga)</span> [pronto]
+   Por qué: el evaporador se queda con hambre (sobrecalentamiento alto) y no hay líquido de sobra en el condensador (subenfriamiento bajo)
+   Qué hacer: repara la fuga ANTES de cargar, registra la tasa de fuga según EPA 608 y carga a la especificación del fabricante
+
+<span class="d">Brújula no toca el equipo: solo lee y aconseja. Tú decides.</span></pre></div>
+      <figcaption><span class="en">Real output of the Technician edition, shortened. Refrigerants: R-404A, R-448A, R-449A, R-507A, R-22, R-134a, R-407F.</span><span class="es">Salida real de la edición Técnico, recortada. Refrigerantes: R-404A, R-448A, R-449A, R-507A, R-22, R-134a, R-407F.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="limits" class="alt">
+  <div class="wrap">
+    <span class="label"><span class="en">Limits</span><span class="es">Límites</span></span>
+    <h2><span class="en">What it does not do yet.</span><span class="es">Lo que todavía no hace.</span></h2>
+    <p class="lead"><span class="en">Brújula OS is version 0.5. It runs on our own machines every day, and it is not finished.</span><span class="es">Brújula OS va en la versión 0.5. Corre todos los días en nuestras propias máquinas, y no está terminado.</span></p>
+    <div class="limits">
+      <ul>
+        <li><span class="en">It boots from USB. Installing it to the computer's disk is not built yet.</span><span class="es">Arranca desde USB. Instalarlo en el disco de la computadora todavía no está hecho.</span></li>
+        <li><span class="en">No desktop yet: it is a console with a numbered menu.</span><span class="es">Todavía no tiene escritorio: es una consola con un menú de números.</span></li>
+        <li><span class="en">Tested on a few real computers, not on many models.</span><span class="es">Probado en pocas computadoras reales, no en muchos modelos.</span></li>
+        <li><span class="en">Technician edition: readings are typed in or read from a file. It does not read probes or controllers by itself yet, and it does not cover ice machines, CO2 or ammonia.</span><span class="es">Edición Técnico: las lecturas se escriben o se leen de un archivo. Todavía no lee sondas ni controladores por sí sola, y no cubre máquinas de hielo, CO2 ni amoníaco.</span></li>
+        <li><span class="en">All its parts run as one Linux user. Separate identities are the next security step.</span><span class="es">Todas sus partes corren con un solo usuario de Linux. Identidades separadas son el siguiente paso de seguridad.</span></li>
+        <li><span class="en">It has not had an independent security audit.</span><span class="es">No ha tenido una auditoría de seguridad independiente.</span></li>
+        <li><span class="en">A few messages still come out in Spanish when you ask for English.</span><span class="es">Algunos mensajes todavía salen en español cuando se pide inglés.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="label"><span class="en">Questions</span><span class="es">Preguntas</span></span>
+    <h2><span class="en">Before you ask.</span><span class="es">Antes de que pregunte.</span></h2>
+    <details><summary><span class="en">Is it a whole operating system?</span><span class="es">¿Es un sistema operativo completo?</span></summary><p><span class="en">It is Linux (a small Debian 13 base) with Brújula built in and started at boot. Brújula is the layer that watches, decides and explains; Linux does the rest.</span><span class="es">Es Linux (una base pequeña de Debian 13) con Brújula adentro, que arranca sola. Brújula es la capa que vigila, decide y explica; Linux hace lo demás.</span></p></details>
+    <details><summary><span class="en">Why no AI?</span><span class="es">¿Por qué sin IA?</span></summary><p><span class="en">Because you should be able to read why a machine did something. Brújula follows fixed rules and shows which reading triggered which rule. The same readings always give the same answer.</span><span class="es">Porque usted debe poder leer por qué una máquina hizo algo. Brújula sigue reglas fijas y enseña qué lectura disparó qué regla. Las mismas lecturas siempre dan la misma respuesta.</span></p></details>
+    <details><summary><span class="en">Does it need internet?</span><span class="es">¿Ocupa internet?</span></summary><p><span class="en">No. It watches, decides and records without it. Internet is only used to send alerts to your phone and for two machines to watch each other.</span><span class="es">No. Vigila, decide y registra sin internet. El internet solo se usa para mandar alertas a su celular y para que dos máquinas se cuiden entre sí.</span></p></details>
+    <details><summary><span class="en">Can I buy it today?</span><span class="es">¿Puedo comprarlo hoy?</span></summary><p><span class="en">Not yet. Write to us and you will hear first.</span><span class="es">Todavía no. Escríbanos y será de los primeros en saber.</span></p></details>
+    <details><summary><span class="en">How is it tested?</span><span class="es">¿Cómo está probado?</span></summary><p><span class="en">197 automated tests, and the image has been booted on a real computer from a USB stick. Tests reduce bugs; they do not promise there are none.</span><span class="es">197 pruebas automáticas, y la imagen se ha arrancado en una computadora real desde una memoria USB. Las pruebas reducen los errores; no prometen que no haya ninguno.</span></p></details>
+  </div>
+</section>
+
+<section id="contact" class="alt final">
+  <div class="wrap">
+    <h2><span class="en">Want to know when it is ready?</span><span class="es">¿Quiere saber cuando esté listo?</span></h2>
+    <p class="lead"><span class="en">Send one email. You get one reply when Brújula OS is available, and nothing else.</span><span class="es">Mande un correo. Recibe una respuesta cuando Brújula OS esté disponible, y nada más.</span></p>
+    <a class="btn btn-primary js-mail" href="#contact"><span class="en">Email us</span><span class="es">Escríbanos</span></a>
+    <p class="small muted" style="margin-top:14px"><span class="js-addr"></span></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> TempLogic Systems</span>
+    <span><a href="https://templogicsystems.com/">templogicsystems.com</a></span>
+  </div>
+</footer>
+<script>
+(function(){
+  var EMAIL = "gnarofdez@templogicsystems.com";
+  var root = document.documentElement;
+  function mailto(){
+    var es = root.getAttribute("data-lang") === "es";
+    return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(es ? "Brújula OS: avíseme cuando esté listo" : "Brújula OS: tell me when it is ready");
+  }
+  function setLang(l){
+    root.setAttribute("data-lang", l); root.lang = l;
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.setLang === l); });
+    document.querySelectorAll(".js-mail").forEach(function(a){ a.href = mailto(); });
+    document.title = l === "es" ? "Brújula OS | Una computadora que se explica sola" : "Brújula OS | A computer that explains itself";
+    try { localStorage.setItem("tl-lang", l); } catch(e){}
+  }
+  var saved = null; try { saved = localStorage.getItem("tl-lang"); } catch(e){}
+  setLang(saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en"));
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){ b.addEventListener("click", function(){ setLang(b.dataset.setLang); }); });
+  document.querySelectorAll(".js-addr").forEach(function(s){ s.textContent = EMAIL; });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
